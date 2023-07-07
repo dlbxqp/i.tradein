@@ -157,3 +157,16 @@ interact('#header__comparison picture').resizable({
 
 }
 /* > form */
+
+const initializingSlider = () => {
+ if(window.matchMedia("(max-width: 1140px)").matches){
+  new ItcSimpleSlider(`.itcss`, {
+   loop: true,
+   autoplay: true,
+   interval: 4000,
+   swipe: true
+  })
+ }
+}
+document.addEventListener('DOMContentLoaded', initializingSlider)
+window.addEventListener('resize', initializingSlider)

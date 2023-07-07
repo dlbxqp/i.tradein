@@ -9,30 +9,14 @@
 
   <title>Trade-in от Инград</title>
 
-  <base href="/assets/">
+  <base href="assets/">
 
   <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 
   <link rel="stylesheet" href="styles/normalize.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/project.css">
-
-<!--[if IE]>
-  <script>
-document.createElement('figcaption')
-document.createElement('template')
-document.createElement('article')
-document.createElement('section')
-document.createElement('header')
-document.createElement('figure')
-document.createElement('footer')
-document.createElement('output')
-document.createElement('aside')
-document.createElement('main')
-document.createElement('menu')
-document.createElement('nav')
-  </script>
-<![endif]-->
+  <link rel="stylesheet" href="styles/media.css">
 
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@latest/pace-theme-default.min.css">
   <style>
@@ -40,13 +24,13 @@ document.createElement('nav')
  background-color: var(--color-yellow) !important
 }
   </style>
-  <!-- + -->
-  <link rel="stylesheet" href="includes/message/s.css">
-  <script src="includes/message/s.js"></script>
-  <!-- + -->
+
   <script src="scripts/imask.min.js"></script>
 
   <script src="//unpkg.com/interactjs/dist/interact.min.js"></script>
+
+  <!-- CSS подключен в media.css -->
+  <script src="scripts/simple_adaptive_slider/s.min.js"></script>
  </head>
 
  <body>
@@ -117,7 +101,7 @@ document.createElement('nav')
      <hr>
     </div>
     <div id="section__middle">
-     <div id="section__middle__left">
+      <div id="section__middle__left">
       <picture>
        <img alt="icon" src="images/peoples/2.png">
       </picture>
@@ -181,32 +165,38 @@ document.createElement('nav')
     </div>
     <div id="section__bottom">
      <h3>А главное, вы получаете</h3>
-     <ul>
-      <li>
-       <picture>
-        <img alt="icon" src="images/icons/1.svg">
-       </picture>
-       <p>Безопасную сделку</p>
-      </li>
-      <li>
-       <picture>
-        <img alt="icon" src="images/icons/2.svg">
-       </picture>
-       <p>Стоимость старой квартиры в зачёт</p>
-      </li>
-      <li>
-       <picture>
-        <img alt="icon" src="images/icons/3.svg">
-       </picture>
-       <p>Возможность жить у себя до переезда в новый дом</p>
-      </li>
-      <li>
-       <picture>
-        <img alt="icon" src="images/icons/4.svg">
-       </picture>
-       <p>Отсутствие затрат на всех этапах сделки</p>
-      </li>
-     </ul>
+     <div>
+      <div class="itcss">
+       <div class="itcss__wrapper">
+        <div class="itcss__items">
+         <div class="itcss__item">
+          <picture>
+           <img alt="icon" src="images/icons/1.svg">
+          </picture>
+          <p>Безопасную сделку</p>
+         </div>
+         <div class="itcss__item">
+          <picture>
+           <img alt="icon" src="images/icons/2.svg">
+          </picture>
+          <p>Стоимость старой квартиры в зачёт</p>
+         </div>
+         <div class="itcss__item">
+          <picture>
+           <img alt="icon" src="images/icons/3.svg">
+          </picture>
+          <p>Возможность жить у себя до переезда в новый дом</p>
+         </div>
+         <div class="itcss__item">
+          <picture>
+           <img alt="icon" src="images/icons/4.svg">
+          </picture>
+          <p>Отсутствие затрат на всех этапах сделки</p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
     </div>
    </section>
 

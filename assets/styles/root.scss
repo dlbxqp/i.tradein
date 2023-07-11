@@ -1,0 +1,35 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $white;
+  background-color: $black;
+  font-size: 16px;
+  margin: 0;
+  padding: 42px;
+}
+
+sup {
+  font-size: 0.7em;
+  line-height: 0.7em;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.h-locked {
+  overflow: hidden;
+}

@@ -1,4 +1,4 @@
-<template>
+<template xmlns="">
     <AppIcons/>
     <main class="container">
         <header class="header">
@@ -33,6 +33,12 @@
             <AppBigTitle class="contra__big-title"
                          string-top="Pro et"
                          string-bottom="Contra"
+            />
+            <AppContraList v-for="(item, index) in contra" :class="`contra__${item.title}`"
+                :key="`contra-list_item_${index}`"
+                :human="item.human"
+                :list="item.list"
+                :isStrike="item.isStrike"
             />
         </section>
 
@@ -72,6 +78,7 @@ import AppIcons from '@/components/UI/Icons/AppIcons.vue';
 import AppBigTitle from '@/components/BigTitle/AppBigTitle.vue';
 import AppHuman from '@/components/Human/AppHuman.vue';
 import AppTreeList from '@/components/TreeList/AppTreeList.vue';
+import AppContraList from '@/components/ContraList/AppContraList.vue';
 import AppComparison from '@/components/UI/Comparison/AppComparison.vue';
 import AppMobSliderCards from '@/components/UI/MobSliderCards/AppMobSliderCards.vue';
 import AppIcon from '@/components/UI/Icons/AppIcon.vue';
@@ -84,6 +91,7 @@ export default {
         AppBigTitle,
         AppHuman,
         AppTreeList,
+        AppContraList,
         AppComparison,
         AppMobSliderCards,
     },
@@ -120,6 +128,43 @@ export default {
                     'Где взять на первый взнос',
                 ],
             },
+
+            contra : [
+                {
+                    title: 'deliverance',
+                    human : {
+                        image : '/assets/images/peoples/2.png',
+                        title : 'От чего вы избавляетесь',
+                    },
+                    list : [
+                        'Старая квартира',
+                        'Унылый пейзаж за окном',
+                        '«Бабушкин» ремонт',
+                        'Шум и гам за стеной',
+                        'Куча машин во дворе'
+                    ],
+                    isStrike: true
+                },
+                {
+                    title: 'acquisitions',
+                    human : {
+                        image : '/assets/images/peoples/3.png',
+                        title : 'Что вы приобретаете',
+                    },
+                    list : [
+                        'Новую квартиру в новом квартале',
+                        'Современную архитектуру',
+                        'Дизайнерские интерьеры дома',
+                        'Чистовую отделку',
+                        'Передовые инженерные технологии',
+                        'Благоустроенный двор без машин',
+                        'Высокие потолки, панорамные окна',
+                        'Район с благоприятной экологией',
+                        'Развитую инфраструктуру',
+                        'Красивые виды из окон'
+                    ]
+                }
+            ],
 
             ransom : {
                 image : {

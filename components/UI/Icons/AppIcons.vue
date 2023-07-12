@@ -4,6 +4,183 @@
          class="visually-hidden"
     >
 
+        <symbol id="banknot"
+                viewBox="0 0 129 128"
+        >
+            <path
+                d="M48.5 84.8H21.3C15.7 84.8 11.1667 80.2667 11.1667 74.6667V26.1333C11.1667 20.5333 15.7 16 21.3 16H102.367C107.967 16 112.5 20.5333 112.5 26.1333V58.6667"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path d="M120.441 93.3333L112.441 85.3333L104.441 93.3333"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path d="M112.441 85.3333V103.472C112.441 108.165 108.601 112 103.913 112H91.1667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path d="M67.2253 93.3333L75.2253 101.333L83.2253 93.3333"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path d="M75.2253 101.333V83.1947C75.2253 78.5014 79.0653 74.6667 83.7533 74.6667H96.5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path
+                d="M70.788 42.512C75.732 47.456 75.732 55.4773 70.788 60.4267C65.844 65.3707 57.8227 65.3707 52.8733 60.4267C47.9293 55.4827 47.9293 47.4613 52.8733 42.512C57.8227 37.5627 65.844 37.5627 70.788 42.512"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path d="M32.5 69.3334H27.1667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path d="M96.5 32H91.1667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+        </symbol>
+
+        <symbol id="money-hand"
+                viewBox="0 0 129 128"
+        >
+            <path fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M32.5 112H21.8333C18.8893 112 16.5 109.611 16.5 106.667V74.6666C16.5 71.7226 18.8893 69.3333 21.8333 69.3333H32.5C35.444 69.3333 37.8333 71.7226 37.8333 74.6666V106.667C37.8333 109.611 35.444 112 32.5 112Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path
+                d="M69.8333 90.6667H82.276C84.5853 90.6667 86.8307 89.92 88.676 88.5334L101.561 78.8694C104.777 76.4587 109.279 76.7787 112.121 79.6214V79.6214C115.279 82.7787 115.279 87.8934 112.121 91.0454L101.065 102.101C98.0893 105.077 94.292 107.109 90.164 107.936L74.5373 111.061C71.4387 111.68 68.244 111.605 65.1773 110.837L51.044 107.307C49.3533 106.88 47.62 106.667 45.876 106.667H37.8333"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M69.8333 90.6666H77.7533C82.2173 90.6666 85.8333 87.0506 85.8333 82.5866V80.9706C85.8333 77.264 83.3107 74.032 79.716 73.136L67.492 70.08C65.5027 69.584 63.4653 69.3333 61.4173 69.3333V69.3333C56.4733 69.3333 51.636 70.7946 47.524 73.5413L37.8333 80"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M92.0669 27.4946C97.9779 33.4056 97.9779 42.9891 92.0669 48.9001C86.1559 54.8111 76.5724 54.8111 70.6614 48.9001C64.7504 42.9891 64.7504 33.4056 70.6614 27.4946C76.5724 21.5836 86.1559 21.5836 92.0669 27.4946"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M78.532 23.3334C78.036 20.32 76.66 17.424 74.3347 15.0987C68.4253 9.18935 58.8413 9.18935 52.932 15.0987C47.0227 21.008 47.0227 30.592 52.932 36.5014C56.612 40.1814 61.7107 41.5627 66.4627 40.6614"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </symbol>
+
+        <symbol id="double-bed"
+                viewBox="0 0 129 128"
+        >
+            <path d="M112.5 96V106.667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M64.5 69.3333H116.244C120.068 69.3333 123.167 72.432 123.167 76.256V90.864C123.167 93.7013 120.868 96 118.031 96H64.5L64.5 69.3333Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path
+                d="M64.5 37.3334C64.5 31.44 70.1693 26.6667 77.1667 26.6667H102.5C109.497 26.6667 115.167 31.44 115.167 37.3334V57.28"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M12.756 69.3333H64.5V96H9.29468C7.38534 96 5.83334 94.448 5.83334 92.5386V76.256C5.83334 72.432 8.93201 69.3333 12.756 69.3333V69.3333Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path
+                d="M13.8333 57.28V37.3334C13.8333 31.44 19.5027 26.6667 26.5 26.6667H51.8333C58.8307 26.6667 64.5 31.44 64.5 37.3334"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path d="M16.5 96V106.667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+            <path
+                d="M11.1667 69.52V64.528C11.1667 58.3413 16.1747 53.3333 22.356 53.3333H53.3107C59.492 53.3333 64.5 58.3413 64.5 64.5226V69.3333"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path
+                d="M64.5 69.3333V64.5226C64.5 58.3413 69.508 53.3333 75.6893 53.3333H106.644C112.825 53.3333 117.833 58.3413 117.833 64.5226V69.5146"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+            <path d="M64.5 37.3333V106.667"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+        </symbol>
+
+        <symbol id="ruble-big"
+                viewBox="0 0 69 96"
+        >
+            <path
+                d="M11 95V1H44.5C50.7326 1 56.7099 3.47589 61.117 7.88299C65.5241 12.2901 68 18.2674 68 24.5C68 27.5861 67.3922 30.6419 66.2112 33.4931C65.0302 36.3442 63.2992 38.9348 61.117 41.117C58.9348 43.2992 56.3442 45.0302 53.4931 46.2112C50.6419 47.3922 47.5861 48 44.5 48H1M1 61H40"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </symbol>
+
+
+
         <symbol id="delimiter"
                 viewBox="0 0 4 220"
         >

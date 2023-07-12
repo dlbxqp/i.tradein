@@ -36,6 +36,14 @@
             />
         </section>
 
+        <section class="get-main">
+            <h2 class="get-main__title">
+                А главное, вы получаете
+            </h2>
+
+            <AppMobSliderCards :list="getMainSlides"/>
+        </section>
+
         <AppIcon class="delimiter"
                  icon="delimiter"
                  :height="220"
@@ -65,6 +73,7 @@ import AppBigTitle from '@/components/BigTitle/AppBigTitle.vue';
 import AppHuman from '@/components/Human/AppHuman.vue';
 import AppTreeList from '@/components/TreeList/AppTreeList.vue';
 import AppComparison from '@/components/UI/Comparison/AppComparison.vue';
+import AppMobSliderCards from '@/components/UI/MobSliderCards/AppMobSliderCards.vue';
 import AppIcon from '@/components/UI/Icons/AppIcon.vue';
 
 export default {
@@ -76,6 +85,7 @@ export default {
         AppHuman,
         AppTreeList,
         AppComparison,
+        AppMobSliderCards,
     },
 
     data() {
@@ -128,6 +138,25 @@ export default {
                     },
                 },
             },
+
+            getMainSlides : [
+                {
+                    icon  : 'banknot',
+                    title : 'Безопасную сделку',
+                },
+                {
+                    icon  : 'money-hand',
+                    title : 'Стоимость старой квартиры в зачёт',
+                },
+                {
+                    icon  : 'double-bed',
+                    title : 'Возможность жить у себя до переезда в новый дом',
+                },
+                {
+                    icon  : 'banknot',
+                    title : 'Отсутствие затрат на всех этапах сделки',
+                },
+            ],
 
             form : {
                 human : {
@@ -186,6 +215,29 @@ export default {
         &__tree {
             max-width: 575px;
             width: 100%;
+        }
+    }
+
+    .get-main {
+        padding-top: 80px;
+
+        &__title {
+            margin-top: 0;
+            margin-bottom: 32px;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+            letter-spacing: -2.1px;
+            font-family: $drunk;
+            color: $white;
+
+            @include tablet {
+                margin-bottom: 40px;
+                font-size: 64px;
+                line-height: 63px;
+                letter-spacing: -3.2px;
+            }
         }
     }
 

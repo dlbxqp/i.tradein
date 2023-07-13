@@ -113,6 +113,7 @@ export default {
             color: $primary-70;
             display: block;
             margin: 0 auto;
+            fill: none;
         }
 
         &__num {

@@ -34,17 +34,21 @@ npm run dev
 
 ## Продакшн
 
+Сборка продакшна как статики:
+
+```bash
+npm run generate
+```
+
 Сборка для продакшна:
 
 ```bash
-# npm
 npm run build
 ```
 
 Посмотреть локально продакшн:
 
 ```bash
-# npm
 npm run preview
 ```
 

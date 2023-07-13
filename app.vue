@@ -92,19 +92,19 @@ export default {
         return {
             comparison : {
                 before : {
-                    image : '/assets/images/comparison/before.png',
+                    image : '/images/comparison/before.png',
                     text  : 'До трейдина',
                 },
 
                 after : {
-                    image : '/assets/images/comparison/after.png',
+                    image : '/images/comparison/after.png',
                     text  : 'После трейдина',
                 },
             },
 
             fears : {
                 human : {
-                    image : '/assets/images/peoples/1.png',
+                    image : '/images/peoples/1.png',
                     title : 'Главные страхи покупателя новой квартиры',
                 },
 
@@ -123,7 +123,7 @@ export default {
 
             ransom : {
                 image : {
-                    url   : '/assets/images/stamp.png',
+                    url   : '/images/stamp.png',
                     sizes : {
                         dWidth  : '280px',
                         dHeight : '280px',
@@ -160,7 +160,7 @@ export default {
 
             form : {
                 human : {
-                    image : '/assets/images/peoples/4.png',
+                    image : '/images/peoples/4.png',
                     title : 'Как это работает',
                     list  : [
                         'Оставьте заявку или позвоните нам',

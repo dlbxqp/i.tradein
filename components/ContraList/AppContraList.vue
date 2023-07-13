@@ -1,21 +1,24 @@
 <template>
-    <div class="contra__board">
-        <div class="contra__human">
+    <div class="contra-list">
+        <div class="contra-list__human">
             <img v-if="human.image"
-                :src="human.image"
-                :alt="human.title"
-                class="contra__human__image"
+                 :src="human.image"
+                 :alt="human.title"
+                 class="contra-list__image"
             >
             <h3 v-if="human.title"
-                class="contra__human__title"
+                class="contra-list__title"
                 v-html="human.title"
             />
         </div>
 
-        <ol class="contra__list" :class="listClasses">
+        <ol class="contra-list__list"
+            :class="listClasses"
+        >
             <li v-for="(item, index) in list"
                 :key="`contra_item_${index}`"
-                class="contra__item"
+                class="contra-list__item"
+                :class="{ 'contra-list__item_strike': isStrike }"
                 v-html="item"
             />
         </ol>
@@ -23,54 +26,45 @@
 </template>
 
 <script>
-import AppHuman from '@/components/Human/AppHuman.vue';
 
 export default {
-    name: 'AppContraList',
-    components : {
-        AppHuman
-    },
+    name : 'AppContraList',
+
     props : {
         human : {
             type     : Array,
-            required : true
+            required : true,
         },
+
         list : {
             type     : Array,
-            required : true
-        }
+            required : true,
+        },
+
+        isStrike : {
+            type    : Boolean,
+            default : false,
+        },
     },
 
     computed : {
-/*
-        listClasses(){
+        listClasses() {
             return {
-                ['contra__list_multicolumn'] : list.length > 5
-            }
-        }
- */
+                'contra-list__list_multicolumn' : this.list.length > 5,
+            };
+        },
     },
-
-    mounted(){
-     const contraLists = document.querySelectorAll('.contra__list')
-     Array.from(contraLists).forEach((list) => {
-         if(list.querySelectorAll('li').length > 5) list.classList.add('contra__list_multicolumn')
-     })
-    }
-}
+};
 </script>
 
 <style lang="scss">
-.contra {
-    &__board {
-        background-color: rgb(16, 16, 16);
+    .contra-list {
+        background-color: $black-10;
         border-radius: 16px;
         display: flex;
         flex-direction: column;
         padding: 32px;
-    }
 
-    &__human {
         &__image {
             margin-top: -60px auto 32px auto;
             display: block;
@@ -102,46 +96,58 @@ export default {
                 text-align: left;
             }
         }
-    }
 
-    &__list {
-        counter-reset: num;
-        padding: 0;
+        &__list {
+            counter-reset: num;
+            padding: 0;
 
-        &_multicolumn{
-            column-count: 2;
-            column-gap: 40px;
-        }
-    }
-
-    &__item {
-        border-bottom: 1px solid $secondary-90;
-        color: $secondary-40;
-        display: flex;
-        font-size: 16px;
-        font-weight: 600;
-        font-family: $inter;
-        line-height: 24px;
-        margin-right: 24px;
-        padding: 16px 0;
-        position: relative;
-
-        &:nth-child(5n + 5) {
-            border-bottom: none;
+            &_multicolumn {
+                column-count: 2;
+                column-gap: 40px;
+            }
         }
 
-        &::before {
-            counter-increment: num;
-            content: counter(num);
-            color: $secondary-80;
-            font-size: 12px;
+        &__item {
+            border-bottom: 1px solid $secondary-90;
+            color: $secondary-40;
+            display: flex;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: $inter;
             line-height: 24px;
             margin-right: 24px;
-        }
+            padding: 16px 0;
+            position: relative;
 
-        &:nth-child(-n+9)::before {
-            content: '0' counter(num);
+            &_strike {
+                &::after {
+                    content: '';
+                    background: transparent url("/assets/images/stroke-red.svg") center left no-repeat;
+                    background-size: 100% 100%;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 24px;
+                    width: 60%;
+                }
+            }
+
+            &:nth-child(5n + 5) {
+                border-bottom: none;
+            }
+
+            &::before {
+                counter-increment: num;
+                content: counter(num);
+                color: $secondary-80;
+                font-size: 12px;
+                line-height: 24px;
+                margin-right: 24px;
+            }
+
+            &:nth-child(-n+9)::before {
+                content: '0' counter(num);
+            }
         }
     }
-}
 </style>

@@ -1,4 +1,4 @@
-<template   >
+<template>
     <AppIcons/>
     <main class="container">
         <header class="header">
@@ -35,10 +35,13 @@
                          string-bottom="Contra"
             />
             <div class="contra__boards">
-                <AppContraList v-for="(item, index) in contra" class="contra__contra-list"
-                    :key="`contra-list_item_${index}`"
-                    :human="item.human"
-                    :list="item.list"
+                <AppContraList v-for="(item, index) in contra"
+                               class="contra__board"
+                               :class="[
+                                   item.list.length > 5 ? 'contra__board_long' : 'contra__board_short'
+                               ]"
+                               :key="`contra-list_item_${index}`"
+                               v-bind="item"
                 />
             </div>
         </section>
@@ -133,25 +136,29 @@ export default {
 
             contra : [
                 {
-                    title: 'deliverance',
+                    title : 'deliverance',
                     human : {
                         image : '/assets/images/peoples/2.png',
                         title : 'От чего вы избавляетесь',
                     },
+
                     list : [
                         'Старая квартира',
                         'Унылый пейзаж за окном',
                         '«Бабушкин» ремонт',
                         'Шум и гам за стеной',
-                        'Куча машин во дворе'
-                    ]
+                        'Куча машин во дворе',
+                    ],
+
+                    isStrike : true,
                 },
                 {
-                    title: 'acquisitions',
+                    title : 'acquisitions',
                     human : {
                         image : '/assets/images/peoples/3.png',
                         title : 'Что вы приобретаете',
                     },
+
                     list : [
                         'Новую квартиру в новом квартале',
                         'Современную архитектуру',
@@ -162,9 +169,9 @@ export default {
                         'Высокие потолки, панорамные окна',
                         'Район с благоприятной экологией',
                         'Развитую инфраструктуру',
-                        'Красивые виды из окон'
-                    ]
-                }
+                        'Красивые виды из окон',
+                    ],
+                },
             ],
 
             ransom : {
@@ -221,109 +228,97 @@ export default {
 </script>
 
 <style lang="scss">
-.header {
-    margin-bottom: 75px;
+    .header {
+        margin-bottom: 75px;
 
-    &__big-title {
-        margin-bottom: 36px;
-    }
-}
-
-.container {
-    width: 1440px;
-    margin: 0 auto;
-}
-
-.delimiter {
-    display: block;
-    margin: 24px auto 40px auto;
-
-    @include tablet {
-        margin-top: 85px;
-        margin-bottom: 80px;
-    }
-}
-
-.fears {
-    @include tablet {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        &__big-title {
+            margin-bottom: 36px;
+        }
     }
 
-    &__human {
-        max-width: 690px;
-        width: 100%;
+    .container {
+        width: 1440px;
+        margin: 0 auto;
     }
 
-    &__tree {
-        max-width: 575px;
-        width: 100%;
-    }
-}
+    .delimiter {
+        display: block;
+        margin: 24px auto 40px;
 
-.contra {
-    &__big-title {
-        margin-bottom: 55px;
+        @include tablet {
+            margin-top: 85px;
+            margin-bottom: 80px;
+        }
     }
 
-    &__boards {
+    .fears {
         @include tablet {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+        }
+
+        &__human {
+            max-width: 690px;
+            width: 100%;
+        }
+
+        &__tree {
+            max-width: 575px;
+            width: 100%;
         }
     }
 
-    &__board:first-child {
-        @include tablet {
-            margin-right: 20px;
-            max-width: 420px;
+    .contra {
+        &__big-title {
+            margin-bottom: 55px;
         }
 
-        &__item {
-            &::after {
-                content: '';
+        &__boards {
+            @include tablet {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+        }
 
-                background: transparent url(/assets/images/stroke-red.svg) center left no-repeat;
-                background-size: 100% 100%;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 24px;
-                width: 60%;
+        &__board {
+            &_short {
+                @include tablet {
+                    max-width: 402px;
+                }
+            }
+
+            &_long {
+                flex-grow: 1;
             }
         }
     }
 
-    &__board:last-child {
-        flex-grow: 1;
-    }
-}
+    .get-main {
+        padding-top: 80px;
 
-.get-main {
-    padding-top: 80px;
+        &__title {
+            margin-top: 0;
+            margin-bottom: 32px;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+            letter-spacing: -2.1px;
+            font-family: $drunk;
+            color: $white;
 
-    &__title {
-        margin-top: 0;
-        margin-bottom: 32px;
-        font-size: 30px;
-        font-weight: 500;
-        line-height: 32px;
-        text-align: center;
-        letter-spacing: -2.1px;
-        font-family: $drunk;
-        color: $white;
-
-        @include tablet {
-            margin-bottom: 40px;
-            font-size: 64px;
-            line-height: 63px;
-            letter-spacing: -3.2px;
+            @include tablet {
+                margin-bottom: 40px;
+                font-size: 64px;
+                line-height: 63px;
+                letter-spacing: -3.2px;
+            }
         }
     }
-}
 
-.form {
-    max-width: 680px;
-}
+    .form {
+        max-width: 680px;
+    }
 </style>

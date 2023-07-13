@@ -34,12 +34,13 @@
                          string-top="Pro et"
                          string-bottom="Contra"
             />
-            <AppContraList v-for="(item, index) in contra" :class="`contra__${item.title}`"
-                :key="`contra-list_item_${index}`"
-                :human="item.human"
-                :list="item.list"
-                :isStrike="item.isStrike"
-            />
+            <div class="contra__boards">
+                <AppContraList v-for="(item, index) in contra" class="contra__contra-list"
+                    :key="`contra-list_item_${index}`"
+                    :human="item.human"
+                    :list="item.list"
+                />
+            </div>
         </section>
 
         <section class="get-main">
@@ -72,6 +73,7 @@
         </section>
     </main>
 </template>
+
 
 <script>
 import AppIcons from '@/components/UI/Icons/AppIcons.vue';
@@ -142,8 +144,7 @@ export default {
                         '«Бабушкин» ремонт',
                         'Шум и гам за стеной',
                         'Куча машин во дворе'
-                    ],
-                    isStrike: true
+                    ]
                 },
                 {
                     title: 'acquisitions',
@@ -224,42 +225,70 @@ export default {
         margin-bottom: 75px;
 
         &__big-title {
-            margin-bottom: 36px;
+            margin-bottom: 36px
         }
     }
 
     .container {
         width: 1440px;
-        margin: 0 auto;
+        margin: 0 auto
     }
 
     .delimiter {
         display: block;
-        margin: 0 auto;
-        margin-top: 24px;
-        margin-bottom: 40px;
+        margin: 24px auto 40px auto;
 
         @include tablet {
             margin-top: 85px;
-            margin-bottom: 80px;
+            margin-bottom: 80px
         }
     }
 
     .fears {
         @include tablet {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex; justify-content: space-between; align-items: center
         }
 
         &__human {
             max-width: 690px;
-            width: 100%;
+            width: 100%
         }
 
         &__tree {
             max-width: 575px;
-            width: 100%;
+            width: 100%
+        }
+    }
+
+    .contra {
+        &__boards {
+            @include tablet {
+                display: flex; justify-content: space-between
+            }
+        }
+
+        &__board:nth-child(1) {
+            @include tablet {
+                margin-right: 20px;
+                max-width: 420px
+            }
+        }
+        &__board:nth-child(1) &__item {
+            &::after {
+                content: '';
+
+                background: transparent url(/assets/images/stroke-red.svg) center left no-repeat;
+                background-size: 100% 100%;
+                position: absolute; top: 0; bottom: 0; left: 24px;
+                width: 60%
+            }
+        }
+
+        &__board:nth-child(2) {
+            flex-grow: 1
+        }
+        &__board:nth-child(2) &__list{
+            column-count: 2; column-gap: 40px
         }
     }
 
@@ -281,12 +310,12 @@ export default {
                 margin-bottom: 40px;
                 font-size: 64px;
                 line-height: 63px;
-                letter-spacing: -3.2px;
+                letter-spacing: -3.2px
             }
         }
     }
 
     .form {
-        max-width: 680px;
+        max-width: 680px
     }
 </style>

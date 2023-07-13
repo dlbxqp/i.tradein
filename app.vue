@@ -1,4 +1,4 @@
-<template xmlns="">
+<template   >
     <AppIcons/>
     <main class="container">
         <header class="header">
@@ -221,101 +221,109 @@ export default {
 </script>
 
 <style lang="scss">
-    .header {
-        margin-bottom: 75px;
+.header {
+    margin-bottom: 75px;
 
-        &__big-title {
-            margin-bottom: 36px
-        }
+    &__big-title {
+        margin-bottom: 36px;
+    }
+}
+
+.container {
+    width: 1440px;
+    margin: 0 auto;
+}
+
+.delimiter {
+    display: block;
+    margin: 24px auto 40px auto;
+
+    @include tablet {
+        margin-top: 85px;
+        margin-bottom: 80px;
+    }
+}
+
+.fears {
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .container {
-        width: 1440px;
-        margin: 0 auto
+    &__human {
+        max-width: 690px;
+        width: 100%;
     }
 
-    .delimiter {
-        display: block;
-        margin: 24px auto 40px auto;
+    &__tree {
+        max-width: 575px;
+        width: 100%;
+    }
+}
 
+.contra {
+    &__big-title {
+        margin-bottom: 55px;
+    }
+
+    &__boards {
         @include tablet {
-            margin-top: 85px;
-            margin-bottom: 80px
+            display: flex;
+            justify-content: space-between;
         }
     }
 
-    .fears {
+    &__board:first-child {
         @include tablet {
-            display: flex; justify-content: space-between; align-items: center
+            margin-right: 20px;
+            max-width: 420px;
         }
 
-        &__human {
-            max-width: 690px;
-            width: 100%
-        }
-
-        &__tree {
-            max-width: 575px;
-            width: 100%
-        }
-    }
-
-    .contra {
-        &__boards {
-            @include tablet {
-                display: flex; justify-content: space-between
-            }
-        }
-
-        &__board:nth-child(1) {
-            @include tablet {
-                margin-right: 20px;
-                max-width: 420px
-            }
-        }
-        &__board:nth-child(1) &__item {
+        &__item {
             &::after {
                 content: '';
 
                 background: transparent url(/assets/images/stroke-red.svg) center left no-repeat;
                 background-size: 100% 100%;
-                position: absolute; top: 0; bottom: 0; left: 24px;
-                width: 60%
-            }
-        }
-
-        &__board:nth-child(2) {
-            flex-grow: 1
-        }
-        &__board:nth-child(2) &__list{
-            column-count: 2; column-gap: 40px
-        }
-    }
-
-    .get-main {
-        padding-top: 80px;
-
-        &__title {
-            margin-top: 0;
-            margin-bottom: 32px;
-            font-size: 30px;
-            font-weight: 500;
-            line-height: 32px;
-            text-align: center;
-            letter-spacing: -2.1px;
-            font-family: $drunk;
-            color: $white;
-
-            @include tablet {
-                margin-bottom: 40px;
-                font-size: 64px;
-                line-height: 63px;
-                letter-spacing: -3.2px
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 24px;
+                width: 60%;
             }
         }
     }
 
-    .form {
-        max-width: 680px
+    &__board:last-child {
+        flex-grow: 1;
     }
+}
+
+.get-main {
+    padding-top: 80px;
+
+    &__title {
+        margin-top: 0;
+        margin-bottom: 32px;
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 32px;
+        text-align: center;
+        letter-spacing: -2.1px;
+        font-family: $drunk;
+        color: $white;
+
+        @include tablet {
+            margin-bottom: 40px;
+            font-size: 64px;
+            line-height: 63px;
+            letter-spacing: -3.2px;
+        }
+    }
+}
+
+.form {
+    max-width: 680px;
+}
 </style>

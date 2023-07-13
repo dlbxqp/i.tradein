@@ -67,12 +67,51 @@
                          :image="ransom.image"
             />
         </section>
-        <section class="form">
-            <AppHuman class="form__human"
+        <section class="land-form">
+            <AppHuman class="land-form__human"
                       :image="form.human.image"
                       :title="form.human.title"
                       :list="form.human.list"
             />
+
+            <div class="land-form__form">
+                <AppField label="Ваше имя"
+                          name="name"
+                          required
+                />
+                <AppField label="Контактный телефон"
+                          placeholder="+7"
+                          name="phone"
+                          type="tel"
+                />
+                <AppField label="Адрес"
+                          placeholder="Улица"
+                          name="street"
+                />
+                <AppField label="Номер дома"
+                          name="house-num"
+                />
+                <AppField label="Этажность дома"
+                          name="house-floor"
+                />
+                <AppField label="Этаж квартиры"
+                          name="flat-floor"
+                />
+                <AppField label="Кол-во комнат"
+                          name="room-col"
+                />
+                <AppField label="Общая площадь"
+                          interlineation="м<sup>2</sup>"
+                          name="flat-square"
+                />
+                <AppField label="Площадь кухни"
+                          interlineation="м<sup>2</sup>"
+                          name="kitchen-square"
+                />
+                <AppButton type="submit">
+                    Оценить стоимость квартиры
+                </AppButton>
+            </div>
         </section>
     </main>
 </template>
@@ -80,6 +119,8 @@
 
 <script>
 import AppIcons from '@/components/UI/Icons/AppIcons.vue';
+import AppButton from '@/components/UI/Button/AppButton.vue';
+import AppField from '@/components/UI/Field/AppField.vue';
 import AppBigTitle from '@/components/BigTitle/AppBigTitle.vue';
 import AppHuman from '@/components/Human/AppHuman.vue';
 import AppTreeList from '@/components/TreeList/AppTreeList.vue';
@@ -99,6 +140,8 @@ export default {
         AppContraList,
         AppComparison,
         AppMobSliderCards,
+        AppButton,
+        AppField,
     },
 
     data() {
@@ -318,7 +361,7 @@ export default {
         }
     }
 
-    .form {
+    .land-form {
         max-width: 680px;
     }
 </style>

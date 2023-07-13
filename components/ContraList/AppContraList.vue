@@ -32,7 +32,7 @@ export default {
 
     props : {
         human : {
-            type     : Array,
+            type     : Object,
             required : true,
         },
 

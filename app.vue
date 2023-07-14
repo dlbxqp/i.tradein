@@ -74,44 +74,7 @@
                       :list="form.human.list"
             />
 
-            <div class="land-form__form">
-                <AppField label="Ваше имя"
-                          name="name"
-                          required
-                />
-                <AppField label="Контактный телефон"
-                          placeholder="+7"
-                          name="phone"
-                          type="tel"
-                />
-                <AppField label="Адрес"
-                          placeholder="Улица"
-                          name="street"
-                />
-                <AppField label="Номер дома"
-                          name="house-num"
-                />
-                <AppField label="Этажность дома"
-                          name="house-floor"
-                />
-                <AppField label="Этаж квартиры"
-                          name="flat-floor"
-                />
-                <AppField label="Кол-во комнат"
-                          name="room-col"
-                />
-                <AppField label="Общая площадь"
-                          interlineation="м<sup>2</sup>"
-                          name="flat-square"
-                />
-                <AppField label="Площадь кухни"
-                          interlineation="м<sup>2</sup>"
-                          name="kitchen-square"
-                />
-                <AppButton type="submit">
-                    Оценить стоимость квартиры
-                </AppButton>
-            </div>
+            <AppTradeInForm class="land-form__form" />
         </section>
     </main>
 </template>
@@ -119,15 +82,14 @@
 
 <script>
 import AppIcons from '@/components/UI/Icons/AppIcons.vue';
-import AppButton from '@/components/UI/Button/AppButton.vue';
-import AppField from '@/components/UI/Field/AppField.vue';
+import AppIcon from '@/components/UI/Icons/AppIcon.vue';
 import AppBigTitle from '@/components/BigTitle/AppBigTitle.vue';
+import AppComparison from '@/components/UI/Comparison/AppComparison.vue';
+import AppMobSliderCards from '@/components/UI/MobSliderCards/AppMobSliderCards.vue';
 import AppHuman from '@/components/Human/AppHuman.vue';
 import AppTreeList from '@/components/TreeList/AppTreeList.vue';
 import AppContraList from '@/components/ContraList/AppContraList.vue';
-import AppComparison from '@/components/UI/Comparison/AppComparison.vue';
-import AppMobSliderCards from '@/components/UI/MobSliderCards/AppMobSliderCards.vue';
-import AppIcon from '@/components/UI/Icons/AppIcon.vue';
+import AppTradeInForm from '@/components/Trade-inForm/AppTrade-inForm.vue';
 
 export default {
     name       : 'App',
@@ -140,27 +102,26 @@ export default {
         AppContraList,
         AppComparison,
         AppMobSliderCards,
-        AppButton,
-        AppField,
+        AppTradeInForm
     },
 
     data() {
         return {
             comparison : {
                 before : {
-                    image : '/assets/images/comparison/before.png',
+                    image : '/images/comparison/before.png',
                     text  : 'До трейдина',
                 },
 
                 after : {
-                    image : '/assets/images/comparison/after.png',
+                    image : '/images/comparison/after.png',
                     text  : 'После трейдина',
                 },
             },
 
             fears : {
                 human : {
-                    image : '/assets/images/peoples/1.png',
+                    image : '/images/peoples/1.png',
                     title : 'Главные страхи покупателя новой квартиры',
                 },
 
@@ -181,7 +142,7 @@ export default {
                 {
                     title : 'deliverance',
                     human : {
-                        image : '/assets/images/peoples/2.png',
+                        image : '/images/peoples/2.png',
                         title : 'От чего вы избавляетесь',
                     },
 
@@ -198,7 +159,7 @@ export default {
                 {
                     title : 'acquisitions',
                     human : {
-                        image : '/assets/images/peoples/3.png',
+                        image : '/images/peoples/3.png',
                         title : 'Что вы приобретаете',
                     },
 
@@ -219,7 +180,7 @@ export default {
 
             ransom : {
                 image : {
-                    url   : '/assets/images/stamp.png',
+                    url   : '/images/stamp.png',
                     sizes : {
                         dWidth  : '280px',
                         dHeight : '280px',
@@ -256,7 +217,7 @@ export default {
 
             form : {
                 human : {
-                    image : '/assets/images/peoples/4.png',
+                    image : '/images/peoples/4.png',
                     title : 'Как это работает',
                     list  : [
                         'Оставьте заявку или позвоните нам',
@@ -264,104 +225,114 @@ export default {
                         'Можно заселяться и устраивать новоселье =)',
                     ],
                 },
-            },
+            }
         };
     },
 };
 </script>
 
 <style lang="scss">
-    .header {
-        margin-bottom: 75px;
+.header {
+    margin-bottom: 75px;
 
-        &__big-title {
-            margin-bottom: 36px;
-        }
+    &__big-title {
+        margin-bottom: 36px;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+    padding: 42px;
+}
+
+.delimiter {
+    display: block;
+    margin: 24px auto 40px;
+
+    @include tablet {
+        margin-top: 85px;
+        margin-bottom: 80px;
+    }
+}
+
+.fears {
+    @include tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
-    .container {
-        width: 1440px;
-        margin: 0 auto;
+    &__human {
+        max-width: 690px;
+        width: 100%;
     }
 
-    .delimiter {
-        display: block;
-        margin: 24px auto 40px;
+    &__tree {
+        max-width: 575px;
+        width: 100%;
+    }
+}
 
-        @include tablet {
-            margin-top: 85px;
-            margin-bottom: 80px;
-        }
+.contra {
+    &__big-title {
+        margin-bottom: 55px;
     }
 
-    .fears {
+    &__boards {
         @include tablet {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        &__human {
-            max-width: 690px;
-            width: 100%;
-        }
-
-        &__tree {
-            max-width: 575px;
-            width: 100%;
+            flex-wrap: wrap;
+            gap: 20px;
         }
     }
 
-    .contra {
-        &__big-title {
-            margin-bottom: 55px;
-        }
-
-        &__boards {
+    &__board {
+        &_short {
             @include tablet {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
+                max-width: 402px;
             }
         }
 
-        &__board {
-            &_short {
-                @include tablet {
-                    max-width: 402px;
-                }
-            }
-
-            &_long {
-                flex-grow: 1;
-            }
+        &_long {
+            flex-grow: 1;
         }
     }
+}
 
-    .get-main {
-        padding-top: 80px;
+.get-main {
+    padding-top: 80px;
 
-        &__title {
-            margin-top: 0;
-            margin-bottom: 32px;
-            font-size: 30px;
-            font-weight: 500;
-            line-height: 32px;
-            text-align: center;
-            letter-spacing: -2.1px;
-            font-family: $drunk;
-            color: $white;
+    &__title {
+        margin-top: 0;
+        margin-bottom: 32px;
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 32px;
+        text-align: center;
+        letter-spacing: -2.1px;
+        font-family: $drunk;
+        color: $white;
 
-            @include tablet {
-                margin-bottom: 40px;
-                font-size: 64px;
-                line-height: 63px;
-                letter-spacing: -3.2px;
-            }
+        @include tablet {
+            margin-bottom: 40px;
+            font-size: 64px;
+            line-height: 63px;
+            letter-spacing: -3.2px;
         }
     }
+}
 
-    .land-form {
-        max-width: 680px;
+.land-form {
+    display: flex;
+    align-items: flex-start;
+    gap: 60px;
+    width: 100%;
+
+    @include tablet {
+        .land-form__human {
+            max-width: 680px;
+        }
     }
+}
 </style>

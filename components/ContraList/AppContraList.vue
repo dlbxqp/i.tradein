@@ -66,7 +66,7 @@ export default {
         padding: 32px;
 
         &__image {
-            margin-top: -60px auto 32px auto;
+            margin: -60px auto 32px auto;
             display: block;
             width: 120px;
             height: 120px;
@@ -102,8 +102,10 @@ export default {
             padding: 0;
 
             &_multicolumn {
-                column-count: 2;
-                column-gap: 40px;
+                @include tablet {
+                    column-count: 2;
+                    column-gap: 40px;
+                }
             }
         }
 
@@ -122,7 +124,7 @@ export default {
             &_strike {
                 &::after {
                     content: '';
-                    background: transparent url("/assets/images/stroke-red.svg") center left no-repeat;
+                    background: transparent url('/images/stroke-red.svg') center left no-repeat;
                     background-size: 100% 100%;
                     position: absolute;
                     top: 0;

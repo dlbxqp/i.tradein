@@ -71,7 +71,7 @@ export default {
     flex-grow: 1;
     flex-wrap: wrap;
     gap: 24px;
-    padding: 48px
+    padding: 48px;
 }
 
 .land-form__1fr{
@@ -80,8 +80,16 @@ export default {
 .land-form__2fr{
     align-self: center;
     flex-basis: calc((100% - 24px) / 2);
+
+    @media all and (max-width: 880px) {
+        flex-basis: 100%;
+    }
 }
 .land-form__3fr{
     flex-basis: calc((100% - (24px * 2)) / 3);
+
+    @media all and (max-width: 880px) {
+        flex-basis: 100%;
+    }
 }
 </style>

@@ -66,13 +66,13 @@ export default {
         padding: 32px;
 
         &__image {
-            margin: -60px auto 32px auto;
+            margin: -60px auto 32px 0;
             display: block;
             width: 120px;
             height: 120px;
 
-            @include tablet {
-                margin-left: 0;
+            @media all and (max-width: 1024px) {
+                margin: 0 auto 32px auto;
                 width: 200px;
                 height: 200px;
             }
@@ -80,20 +80,22 @@ export default {
 
         &__title {
             color: $secondary-50;
-            font-size: 30px;
+            font-size: 40px;
+            line-height: 44px;
+            letter-spacing: -2px;
+            text-align: left;
             font-weight: 500;
             font-family: $drunk;
-            line-height: 32px;
-            letter-spacing: -2.1px;
-            text-align: center;
             margin-bottom: 32px;
             max-width: 420px;
 
-            @include tablet {
-                font-size: 40px;
-                line-height: 44px;
-                letter-spacing: -2px;
-                text-align: left;
+            @media all and (max-width: 740px) {
+                display: flex; justify-content: center;
+                font-size: 30px;
+                line-height: 32px;
+                letter-spacing: -2.1px;
+                text-align: center;
+                max-width: none;
             }
         }
 
@@ -102,7 +104,7 @@ export default {
             padding: 0;
 
             &_multicolumn {
-                @include tablet {
+                @media all and (min-width: 1350px) {
                     column-count: 2;
                     column-gap: 40px;
                 }
@@ -130,7 +132,7 @@ export default {
                     top: 0;
                     bottom: 0;
                     left: 24px;
-                    width: 60%;
+                    width: 60%; height: 100%;
                 }
             }
 

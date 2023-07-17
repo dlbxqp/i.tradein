@@ -3,45 +3,45 @@
     <main class="container">
         <header class="header">
             <AppBigTitle class="header__big-title"
-                         string-top="Trade–in"
-                         string-bottom="Ingrad"
-                         text="+7 (495) 256-40-69"
-                         text-link="tel:+74952564069"
+                string-top="Trade–in"
+                string-bottom="Ingrad"
+                text="+7 (495) 256-40-69"
+                text-link="tel:+74952564069"
             />
             <AppComparison :before="comparison.before"
-                           :after="comparison.after"
+                :after="comparison.after"
             />
         </header>
 
         <section class="fears">
             <AppHuman class="fears__human"
-                      :image="fears.human.image"
-                      :title="fears.human.title"
+                :image="fears.human.image"
+                :title="fears.human.title"
             />
             <AppTreeList class="fears__list"
-                         :list="fears.list"
+                :list="fears.list"
             />
         </section>
 
         <AppIcon class="delimiter"
-                 icon="delimiter"
-                 :height="220"
-                 :width="4"
+            icon="delimiter"
+            :height="220"
+            :width="4"
         />
 
         <section class="contra">
             <AppBigTitle class="contra__big-title"
-                         string-top="Pro et"
-                         string-bottom="Contra"
+                string-top="Pro et"
+                string-bottom="Contra"
             />
             <div class="contra__boards">
                 <AppContraList v-for="(item, index) in contra"
-                               class="contra__board"
-                               :class="[
-                                   item.list.length > 5 ? 'contra__board_long' : 'contra__board_short'
-                               ]"
-                               :key="`contra-list_item_${index}`"
-                               v-bind="item"
+                    class="contra__board"
+                    :class="[
+                                           item.list.length > 5 ? 'contra__board_long' : 'contra__board_short'
+                                       ]"
+                    :key="`contra-list_item_${index}`"
+                    v-bind="item"
                 />
             </div>
         </section>
@@ -55,27 +55,28 @@
         </section>
 
         <AppIcon class="delimiter"
-                 icon="delimiter"
-                 :height="220"
-                 :width="4"
+            icon="delimiter"
+            :height="220"
+            :width="4"
         />
 
         <section class="ransom">
             <AppBigTitle class="ransom__big-title"
-                         string-top="Инград"
-                         string-bottom="Выкупает"
-                         :image="ransom.image"
+                string-top="Инград"
+                string-bottom="Выкупает"
+                :image="ransom.image"
             />
         </section>
         <section class="land-form">
             <AppHuman class="land-form__human"
-                      :image="form.human.image"
-                      :title="form.human.title"
-                      :list="form.human.list"
+                :image="form.human.image"
+                :title="form.human.title"
+                :list="form.human.list"
             />
 
-            <AppTradeInForm class="land-form__form" />
+            <AppTradeInForm class="land-form__form"/>
         </section>
+
     </main>
 </template>
 
@@ -243,7 +244,13 @@ export default {
 .container {
     width: 100%;
     max-width: 1440px;
+    overflow-x: hidden;
     padding: 42px;
+
+    @media all and (max-width: 620px) {
+        width: calc(100vw - (20px * 2));
+        padding: 20px;
+    }
 }
 
 .delimiter {
@@ -257,26 +264,33 @@ export default {
 }
 
 .fears {
-    @include tablet {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media all and (max-width: 920px) {
+        flex-direction: column;
     }
 
     &__human {
         max-width: 690px;
-        width: 100%;
     }
 
     &__tree {
-        max-width: 575px;
-        width: 100%;
+        flex-grow: 1;
     }
 }
 
 .contra {
-    &__big-title {
+    .big-title {
         margin-bottom: 55px;
+
+        &__top{
+            @media all and (max-width: 620px) {
+                margin-right: auto;
+                margin-left: 0;
+            }
+        }
     }
 
     &__boards {
@@ -285,17 +299,26 @@ export default {
             flex-wrap: wrap;
             gap: 20px;
         }
+
+
+        @media all and (max-width: 1024px) {
+            flex-direction: column;
+        }
     }
 
     &__board {
         &_short {
-            @include tablet {
+            @media all and (min-width: 1024px) {
                 max-width: 402px;
             }
         }
 
         &_long {
             flex-grow: 1;
+        }
+
+        @media all and (max-width: 740px) {
+            margin-top: 56px;
         }
     }
 }
@@ -323,6 +346,10 @@ export default {
     }
 }
 
+.ransom{
+    margin-bottom: 24px
+}
+
 .land-form {
     display: flex;
     align-items: flex-start;
@@ -333,6 +360,9 @@ export default {
         .land-form__human {
             max-width: 680px;
         }
+    }
+    @media all and (max-width: 680px) {
+        flex-direction: column;
     }
 }
 </style>

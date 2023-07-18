@@ -97,15 +97,15 @@ export default {
             line-height: 1;
             text-transform: uppercase;
 
-            @media all and (max-width: 1440px) {
+            @media (max-width: 1440px) {
                 font-size: 8vw
             }
-            @media all and (max-width: 620px) {
+            @media (max-width: 620px) {
                 margin-bottom: 8px;
             }
         }
         &__top{
-            @media all and (max-width: 620px) {
+            @media (max-width: 620px) {
                 margin-left: auto;
                 order: 2
             }
@@ -122,7 +122,7 @@ export default {
             margin: 0;
             width: 100%;
 
-            @media all and (max-width: 620px) {
+            @media (max-width: 620px) {
                 order: 2;
             }
         }
@@ -141,7 +141,7 @@ export default {
                 }
             }
 
-            @media all and (max-width: 620px) {
+            @media (max-width: 620px) {
                 font-size: 16px;
                 line-height: 24px;
                 margin-bottom: 24px;

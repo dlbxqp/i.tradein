@@ -52,7 +52,7 @@ export default {
         width: 200px;
         height: 200px;
 
-        @media all and (max-width: 920px) {
+        @media (max-width: 920px) {
             margin: 0 auto;
             width: 120px;
             height: 120px;
@@ -69,14 +69,14 @@ export default {
         letter-spacing: -3.2px;
         text-align: left;
 
-        @media all and (max-width: 1380px) {
+        @media (max-width: 1380px) {
             font-size: 30px;
             font-weight: 500;
             line-height: 32px;
             letter-spacing: -1.5px;
 
         }
-        @media all and (max-width: 920px) {
+        @media (max-width: 920px) {
             text-align: center;
         }
     }

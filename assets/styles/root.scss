@@ -16,10 +16,25 @@ body {
     -moz-osx-font-smoothing: grayscale;
     color: $white;
     background-color: $black;
-
+    background-image: url(images/spot.png);
+    background-position: top 400px left calc(50% + 400px);
+    background-repeat: no-repeat;
     margin: 0;
     padding: 0;
     width: 100%;
+
+    @media (max-width: 1440px) {
+        background-position: top 300px left calc(50% + 400px);
+    }
+    @media (max-width: 920px) {
+        background-position: top 200px left calc(50% + 400px);
+    }
+    @media (max-width: 640px) {
+        background-position: top 100px left calc(50% + 400px);
+    }
+    @media (max-width: 420px) {
+        background-position: top 0 left calc(50% + 400px);
+    }
 }
 
 sup {

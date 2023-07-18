@@ -76,7 +76,6 @@
 
             <AppTradeInForm class="land-form__form"/>
         </section>
-
     </main>
 </template>
 
@@ -90,7 +89,7 @@ import AppMobSliderCards from '@/components/UI/MobSliderCards/AppMobSliderCards.
 import AppHuman from '@/components/Human/AppHuman.vue';
 import AppTreeList from '@/components/TreeList/AppTreeList.vue';
 import AppContraList from '@/components/ContraList/AppContraList.vue';
-import AppTradeInForm from '@/components/Trade-inForm/AppTrade-inForm.vue';
+import AppTradeInForm from '@/components/TradeInForm/AppTradeInForm.vue';
 
 export default {
     name       : 'App',
@@ -233,136 +232,152 @@ export default {
 </script>
 
 <style lang="scss">
-.header {
-    margin-bottom: 75px;
-
-    &__big-title {
-        margin-bottom: 36px;
-    }
-}
-
 .container {
     width: 100%;
     max-width: 1440px;
     overflow-x: hidden;
     padding: 42px;
 
-    @media all and (max-width: 620px) {
-        width: calc(100vw - (20px * 2));
+    @media (max-width: 620px) {
+        width: 100vw;
         padding: 20px;
     }
-}
 
-.delimiter {
-    display: block;
-    margin: 24px auto 40px;
+    .header {
+        margin-bottom: 75px;
 
-    @include tablet {
-        margin-top: 85px;
-        margin-bottom: 80px;
-    }
-}
-
-.fears {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media all and (max-width: 920px) {
-        flex-direction: column;
-    }
-
-    &__human {
-        max-width: 690px;
-    }
-
-    &__tree {
-        flex-grow: 1;
-    }
-}
-
-.contra {
-    .big-title {
-        margin-bottom: 55px;
-
-        &__top{
-            @media all and (max-width: 620px) {
-                margin-right: auto;
-                margin-left: 0;
-            }
+        &__big-title {
+            margin-bottom: 36px;
         }
     }
 
-    &__boards {
+    .delimiter {
+        display: block;
+        margin: 24px auto 40px;
+
         @include tablet {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            margin-top: 85px;
+            margin-bottom: 80px;
         }
+    }
 
+    .fears {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        @media all and (max-width: 1024px) {
+        @media (max-width: 920px) {
             flex-direction: column;
         }
+
+        &__human {
+            max-width: 690px;
+        }
+
+        &__tree {
+            flex-grow: 1;
+        }
     }
 
-    &__board {
-        &_short {
-            @media all and (min-width: 1024px) {
-                max-width: 402px;
+    .contra {
+        .big-title {
+            margin-bottom: 55px;
+
+            &__top{
+                @media (max-width: 620px) {
+                    margin-right: auto;
+                    margin-left: 0;
+                }
             }
         }
 
-        &_long {
+        &__boards {
+            @include tablet {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+
+            @media (max-width: 1024px) {
+                flex-direction: column;
+            }
+        }
+
+        &__board {
+            &_short {
+                @media (min-width: 1024px) {
+                    max-width: 402px;
+                }
+            }
+
+            &_long {
+                flex-grow: 1;
+            }
+
+            @media (max-width: 740px) {
+                margin-top: 56px;
+            }
+        }
+    }
+
+    .get-main {
+        padding-top: 80px;
+
+        &__title {
+            margin-top: 0;
+            margin-bottom: 32px;
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 32px;
+            text-align: center;
+            letter-spacing: -2.1px;
+            font-family: $drunk;
+            color: $white;
+
+            @include tablet {
+                margin-bottom: 40px;
+                font-size: 64px;
+                line-height: 63px;
+                letter-spacing: -3.2px;
+            }
+        }
+    }
+
+    .ransom{
+        margin-bottom: 24px
+    }
+
+    .land-form {
+        display: flex;
+        align-items: flex-start;
+        gap: 60px;
+        width: 100%;
+
+        &__human,
+        &__form{
+            width: 100%;
+        }
+        &__form{
+            background-color: $black-10;
+            border-radius: 16px;
             flex-grow: 1;
+            padding: 48px;
+
+            @media (max-width: 880px) {
+                border-radius: 0;
+                margin: 0 -20px;
+                padding: 16px;
+                width: 100vw;
+            }
+            @media (min-width: 880px) {
+                max-width: 625px;
+            }
         }
 
-        @media all and (max-width: 740px) {
-            margin-top: 56px;
+        @media (max-width: 880px) {
+            flex-direction: column;
         }
-    }
-}
-
-.get-main {
-    padding-top: 80px;
-
-    &__title {
-        margin-top: 0;
-        margin-bottom: 32px;
-        font-size: 30px;
-        font-weight: 500;
-        line-height: 32px;
-        text-align: center;
-        letter-spacing: -2.1px;
-        font-family: $drunk;
-        color: $white;
-
-        @include tablet {
-            margin-bottom: 40px;
-            font-size: 64px;
-            line-height: 63px;
-            letter-spacing: -3.2px;
-        }
-    }
-}
-
-.ransom{
-    margin-bottom: 24px
-}
-
-.land-form {
-    display: flex;
-    align-items: flex-start;
-    gap: 60px;
-    width: 100%;
-
-    @include tablet {
-        .land-form__human {
-            max-width: 680px;
-        }
-    }
-    @media all and (max-width: 680px) {
-        flex-direction: column;
     }
 }
 </style>

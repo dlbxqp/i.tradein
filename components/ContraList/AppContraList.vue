@@ -71,7 +71,7 @@ export default {
             width: 120px;
             height: 120px;
 
-            @media all and (max-width: 1024px) {
+            @media (max-width: 1024px) {
                 margin: 0 auto 32px auto;
                 width: 200px;
                 height: 200px;
@@ -89,7 +89,7 @@ export default {
             margin-bottom: 32px;
             max-width: 420px;
 
-            @media all and (max-width: 740px) {
+            @media (max-width: 740px) {
                 display: flex; justify-content: center;
                 font-size: 30px;
                 line-height: 32px;
@@ -104,7 +104,7 @@ export default {
             padding: 0;
 
             &_multicolumn {
-                @media all and (min-width: 1350px) {
+                @media (min-width: 1350px) {
                     column-count: 2;
                     column-gap: 40px;
                 }

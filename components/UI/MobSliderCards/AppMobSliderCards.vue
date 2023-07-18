@@ -73,9 +73,9 @@ export default {
 
                 breakpoints : {
                     // eslint-disable-next-line no-magic-numbers
-                    544 : {
-                        destroy : true,
-                    },
+                    1400 : {
+                        destroy : true
+                    }
                 },
             },
 

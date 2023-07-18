@@ -130,6 +130,46 @@ export default {
             };
         },
     },
+
+    methods: {
+        checkForm(){
+            const form = document.querySelector('.trade-in-form__form')
+            const cFields = form.querySelectorAll('input')
+
+            const data = {};
+            data.utm_code = window.location.href;
+            cFields.forEach((field) => {
+                if(field.classList.contains('.field_is-error')) return false;
+
+                data[field.name] = field.value;
+            });
+
+            if(!this.isError){
+                fetch(
+                    'https://wd.ingrad.ru/other/toEMail/tradeIn.php',
+                    {
+                        method: 'POST',
+                        mode: 'cors',
+                        cache: 'no-cache',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: new URLSearchParams(data)
+                    }
+                ).then(() => {
+                    this.disabled = {}
+
+                    fields.forEach(field => {
+                        this.formFields[field] = (field === 'flatCondition' || field === 'houseType') ? null : '';
+                    })
+                    e.target.reset();
+
+                    this.button.text = 'Заявка отправлена';
+                    this.button.icon = 'checkicon';
+                });
+            }
+        }
+    }
 };
 </script>
 
@@ -150,7 +190,7 @@ export default {
         text-size-adjust: none;
         box-sizing: border-box;
         cursor: pointer;
-        white-space: nowrap;
+        //white-space: nowrap;
         border: 1px solid transparent;
         color: $black;
         font-weight: 600;

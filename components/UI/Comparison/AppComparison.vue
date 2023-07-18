@@ -87,7 +87,7 @@ export default defineComponent({
             left: 44px;
             top: 40px;
 
-            @media all and (max-width: 620px) {
+            @media (max-width: 620px) {
                 display: none;
             }
         }
@@ -100,7 +100,7 @@ export default defineComponent({
         min-height: 320px;
     }
 
-    @media all and (max-width: 620px) {
+    @media (max-width: 620px) {
         border-radius: 0;
         margin: 0 -20px;
     }

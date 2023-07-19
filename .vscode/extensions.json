@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "rohit-gohri.format-code-action",
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
+    "hex-ci.stylelint-plus",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint"
+  ]
+}

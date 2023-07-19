@@ -1,0 +1,337 @@
+@mixin not-disabled($bl) {
+    @if & {
+        &:not(:disabled):not(#{$bl}_disabled) {
+            @content;
+        }
+    }
+}
+
+.button {
+    $bl: &;
+
+    @include clear-input;
+
+    text-size-adjust: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    color: $black;
+    font-weight: 600;
+    text-align: center;
+    display: inline-flex;
+    vertical-align: top;
+    justify-content: center;
+    align-items: center;
+    transition-duration: $transition-duration;
+    transition-property: color, background-color, opacity, border-color;
+    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+
+    &_disabled,
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &_block {
+        display: flex;
+        width: 100%;
+    }
+
+    &_color {
+        &_black {
+            &#{$bl}_base {
+                background-color: $black;
+                color: $white;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $secondary-90;
+                    }
+
+                    &:active {
+                        background-color: $secondary-80;
+                    }
+                }
+
+                &:disabled,
+                &#{$bl}_disabled {
+                    opacity: 0.1;
+                }
+            }
+
+            &#{$bl}_ghost {
+                border-color: $black;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        border-color: $secondary-90;
+                        color: $secondary-90;
+                    }
+
+                    &:active {
+                        border-color: $secondary-80;
+                        color: $secondary-80;
+                    }
+                }
+
+                &:disabled,
+                &#{$bl}_disabled {
+                    opacity: 0.3;
+                }
+            }
+
+            &#{$bl}_clear {
+                @include not-disabled($bl) {
+                    &:hover {
+                        color: $secondary-90;
+                    }
+
+                    &:active {
+                        color: $secondary-80;
+                    }
+                }
+
+                &:disabled,
+                &#{$bl}_disabled {
+                    opacity: 0.3;
+                }
+            }
+        }
+
+        &_white {
+            &#{$bl}_base {
+                background-color: $white;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $secondary-60;
+                    }
+
+                    &:active {
+                        background-color: $secondary-80;
+                    }
+                }
+            }
+
+            &#{$bl}_ghost {
+                border-color: $white;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        border-color: $secondary-60;
+                        color: $secondary-60;
+                    }
+
+                    &:active {
+                        border-color: $secondary-80;
+                        color: $secondary-80;
+                    }
+                }
+            }
+
+            &:disabled,
+            &#{$bl}_disabled {
+                opacity: 0.3;
+            }
+        }
+
+        &_primary_30 {
+            &#{$bl}_base {
+                background-color: $primary-30;
+                color: $primary-80;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $primary-40;
+                    }
+
+                    &:active {
+                        background-color: $primary-50;
+                        color: $primary-100;
+                    }
+                }
+
+                &:disabled,
+                &#{$bl}_disabled {
+                    opacity: 0.4;
+                    color: $primary-100;
+                }
+            }
+        }
+
+        &_primary_60 {
+            &#{$bl}_base {
+                background-color: $primary-60;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $primary-70;
+                    }
+
+                    &:active {
+                        background-color: $primary-80;
+                    }
+                }
+            }
+        }
+
+        &_primary_70 {
+            &#{$bl}_ghost {
+                border-color: $primary-70;
+                color: $primary-70;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        border-color: $primary-90;
+                        color: $primary-90;
+                    }
+
+                    &:active {
+                        border-color: $primary-100;
+                        color: $primary-100;
+                    }
+                }
+            }
+
+            &#{$bl}_clear {
+                color: $primary-70;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        color: $primary-90;
+                    }
+
+                    &:active {
+                        color: $primary-100;
+                    }
+                }
+            }
+        }
+
+        &_secondary_15 {
+            &#{$bl}_base {
+                background-color: $secondary-15;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $secondary-20;
+                    }
+
+                    &:active {
+                        background-color: $secondary-40;
+                    }
+                }
+            }
+        }
+
+        &_secondary_30 {
+            &#{$bl}_base {
+                background-color: $secondary-30;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $secondary-40;
+                    }
+
+                    &:active {
+                        background-color: $secondary-60;
+                    }
+                }
+            }
+        }
+
+        &_secondary_50 {
+            &#{$bl}_ghost {
+                border-color: $secondary-50;
+                color: $black;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        border-color: $secondary-60;
+                        color: $secondary-90;
+                    }
+
+                    &:active {
+                        border-color: $secondary-70;
+                        color: $secondary-80;
+                    }
+                }
+            }
+
+            &#{$bl}_base {
+                background-color: $secondary-50;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $secondary-60;
+                    }
+
+                    &:active {
+                        background-color: $secondary-80;
+                    }
+                }
+            }
+        }
+
+        &_secondary_100 {
+            &#{$bl}_base {
+                background-color: $secondary-100;
+                color: $secondary-80;
+
+                @include not-disabled($bl) {
+                    &:hover {
+                        background-color: $secondary-90;
+                        color: $secondary-60;
+                    }
+
+                    &:active {
+                        color: $secondary-50;
+                    }
+                }
+            }
+
+            &:disabled,
+            &#{$bl}_disabled {
+                opacity: 0.3;
+            }
+        }
+    }
+
+    &_size {
+        &_small {
+            border-radius: 8px;
+            font-size: 12px;
+            line-height: 1.3;
+            letter-spacing: 0.25px;
+            padding: 7px 12px;
+        }
+
+        &_medium {
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.4;
+            padding: 13px 18px;
+        }
+
+        &_large {
+            border-radius: 14px;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 15px 24px;
+        }
+    }
+
+    &__icon {
+        &_left {
+            order: -1;
+            margin-right: 8px;
+        }
+
+        &_right {
+            order: 1;
+            margin-left: 8px;
+        }
+    }
+}

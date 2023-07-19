@@ -1,0 +1,18 @@
+@mixin font-face($family, $filename: $family, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: '#{$family}';
+    font-display: swap;
+    src: url('@/assets/fonts/#{$filename}.woff2') format('woff2'),
+      url('@/assets/fonts/#{$filename}.woff') format('woff');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@include font-face('Inter', 'Inter-Regular', 400);
+@include font-face('Inter', 'Inter-SemiBold', 600);
+@include font-face('Inter', 'Inter-Bold', 700);
+@include font-face('DrukTextWideCy', 'DrukTextWideCy-Medium', 500);
+
+$drunk: 'DrukTextWideCy', arial, sans-serif;
+$inter: 'Inter', arial, sans-serif;

@@ -1,0 +1,35 @@
+// WARNING! When you add/remove/change var in ds-palette.scss – please, add/remove/change var in this file
+
+// This vars using in style="" and more
+
+:root {
+  --white: #{$white};
+  --black: #{$black};
+  --black-10: #{$black-10}
+  --red: #{$red};
+  --red-50: #{$red-50};
+  --blue-50: #{$blue-50};
+  --green-20: #{$green-20};
+  --green-100: #{$green-100};
+  --primary-20: #{$primary-20};
+  --primary-30: #{$primary-30};
+  --primary-40: #{$primary-40};
+  --primary-50: #{$primary-50};
+  --primary-60: #{$primary-60};
+  --primary-70: #{$primary-70};
+  --primary-80: #{$primary-80};
+  --primary-90: #{$primary-90};
+  --primary-100: #{$primary-100};
+  --secondary-5: #{$secondary-5};
+  --secondary-10: #{$secondary-10};
+  --secondary-15: #{$secondary-15};
+  --secondary-20: #{$secondary-20};
+  --secondary-30: #{$secondary-30};
+  --secondary-40: #{$secondary-40};
+  --secondary-50: #{$secondary-50};
+  --secondary-60: #{$secondary-60};
+  --secondary-70: #{$secondary-70};
+  --secondary-80: #{$secondary-80};
+  --secondary-90: #{$secondary-90};
+  --secondary-100: #{$secondary-100};
+}

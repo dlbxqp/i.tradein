@@ -1,0 +1,24 @@
+//////////////////////////
+/// clear number field ///
+//////////////////////////
+// stylelint-disable property-no-vendor-prefix
+
+@mixin clear-number {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+
+    @if & {
+        &:hover,
+        &:focus {
+            -moz-appearance: textfield;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+    }
+}

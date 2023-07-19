@@ -1,0 +1,80 @@
+$mobile-max: 743px;
+$mobile-popular-small: 390px;
+$mobile-popular-normal: 414px;
+$tablet-min: 744px;
+$tablet-max: 1024px;
+$laptop-min: 1025px;
+$laptop-max: 1919px;
+$desktop-min: 1920px;
+$pc: 1170px;
+
+/*
+Как использовать:
+.header {
+    color: red;
+
+    @include tablet-only {
+        color: white;
+    }
+}
+*/
+
+@mixin mobile-popular-small() {
+    @media screen and (max-width: $mobile-popular-small) {
+        @content;
+    }
+}
+
+@mixin mobile-popular-normal() {
+    @media screen and (min-width: $mobile-popular-small) and (max-width: $mobile-popular-normal) {
+        @content;
+    }
+}
+
+@mixin mobile-only {
+    @media (max-width: $mobile-max) {
+        @content;
+    }
+}
+
+@mixin tablet-only {
+    @media (min-width: $tablet-min) and (max-width: $tablet-max) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $tablet-min) {
+        @content;
+    }
+}
+
+@mixin no-pc {
+    @media (max-width: calc($pc - 1px)) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media (min-width: $pc) {
+        @content;
+    }
+}
+
+@mixin laptop-only {
+    @media (min-width: $laptop-min) and (max-width: $laptop-max) {
+        @content;
+    }
+}
+
+@mixin laptop {
+    @media (min-width: $laptop-min) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop-min) {
+        @content;
+    }
+}

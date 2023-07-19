@@ -45,71 +45,74 @@ export default {
 </script>
 
 <style lang="scss">
-    .human {
-        &__image {
+.human {
+    &__image {
+        display: block;
+        margin-left: 0;
+        width: 200px;
+        height: 200px;
+
+        @media (max-width: 920px) {
             margin: 0 auto;
-            display: block;
             width: 120px;
             height: 120px;
-
-            @include tablet {
-                margin-left: 0;
-                width: 200px;
-                height: 200px;
-            }
         }
+    }
 
-        &__title {
-            margin-top: 32px;
-            margin-bottom: 32px;
-            color: $secondary-50;
-            text-align: center;
-            font-family: $drunk;
+    &__title {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        color: $secondary-50;
+        font-family: $drunk;
+        font-size: 64px;
+        line-height: 63px;
+        letter-spacing: -3.2px;
+        text-align: left;
+
+        @media (max-width: 1380px) {
             font-size: 30px;
             font-weight: 500;
             line-height: 32px;
-            letter-spacing: -2.1px;
+            letter-spacing: -1.5px;
 
-            @include tablet {
-                font-size: 64px;
-                line-height: 63px;
-                letter-spacing: -3.2px;
-                text-align: left;
-            }
         }
-
-        &__list {
-            @include clear-list;
-        }
-
-        &__item {
-            counter-increment: num;
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 24px;
-            color: $secondary-50;
-            display: flex;
-            align-items: center;
-            padding-top: 12px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba($white, 0.2);
-
-            @include tablet {
-                font-size: 18px;
-            }
-
-            &::before {
-                content: counter(num);
-                color: $secondary-80;
-                font-size: 12px;
-                font-weight: 600;
-                line-height: 24px;
-                margin-right: 24px;
-            }
-
-            &:nth-child(-n+9)::before {
-                content: "0" counter(num);
-            }
+        @media (max-width: 920px) {
+            text-align: center;
         }
     }
+
+    &__list {
+        @include clear-list;
+    }
+
+    &__item {
+        counter-increment: num;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+        color: $secondary-50;
+        display: flex;
+        align-items: center;
+        padding-top: 12px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba($white, 0.2);
+
+        @include tablet {
+            font-size: 18px;
+        }
+
+        &::before {
+            content: counter(num);
+            color: $secondary-80;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 24px;
+            margin-right: 24px;
+        }
+
+        &:nth-child(-n+9)::before {
+            content: "0" counter(num);
+        }
+    }
+}
 </style>

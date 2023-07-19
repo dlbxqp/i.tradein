@@ -1,27 +1,27 @@
 <template>
     <label class="field"
-           :class="classNames"
+        :class="classNames"
     >
         <div class="field__wrapper">
-            <span v-if="label"
-                  class="field__label"
-                  v-html="label"
+            <span class="field__label"
+                v-if="label"
+                v-html="label"
             />
-            <input :value="modelValue"
-                   :type="type"
-                   class="field__input"
-                   :name="name"
-                   :placeholder="placeholder"
-                   :required="required"
-                   @input="updateValue"
-            >
+                <input :value="modelValue"
+                    :type="type"
+                    class="field__input"
+                    :name="name"
+                    :placeholder="placeholder"
+                    :required="required"
+                    @input="updateValue"
+                >
             <span v-if="interlineation"
-                  class="field__interlineation"
-                  v-html="interlineation"
-            />
+            class="field__interlineation"
+            v-html="interlineation"
+        />
         </div>
         <p v-if="error"
-           class="field__error"
+            class="field__error"
         >{{ error }}</p>
     </label>
 </template>
@@ -30,7 +30,6 @@
 export default {
     name  : 'AppField',
     props : {
-
         /**
          * Type for input
          * @values standart type's for input (text, tel, email, number)
@@ -88,16 +87,77 @@ export default {
                 'field_is-show_interlineation' : this.interlineation.length,
                 'field_is-show_placeholder'    : this.placeholder.length,
                 'field_is-show_label'          : this.label.length,
-                'field_not-empty'              : this.modelValue.length,
+                'field_not-empty'              : this.modelValue.length, //Почему не работает?
                 'field_is-error'               : this.error.length || this.isError,
             };
         },
     },
 
     methods : {
-        updateValue(event) {
-            this.$emit('update:modelValue', event.target.value);
+        updateValue(e) {
+            this.$emit('update:modelValue', e.target.value)
+
+            e.target.value.length > 0 && e.target.classList.add();
+
+            //< name
+            if(
+                this.name === 'name'
+            ){
+                e.target.value = e.target.value.replaceAll(/[^а-яёa-z\s-]/ig, '');
+            }
+            //> name
+
+            //< numbers
+            if(
+                this.name === 'floors'
+                || this.name === 'floor'
+                || this.name === 'rooms'
+                || this.name === 'total-area'
+                || this.name === 'kitchen-area'
+            ){
+                e.target.value = e.target.value.replaceAll(/\D/ig, '');
+
+                if(
+                    this.name === 'floors'
+                    || this.name === 'floor'
+                    || this.name === 'rooms'
+                    || this.name === 'kitchen-area'
+                ) {
+                    e.target.value.length > 2 && (e.target.value = e.target.value.substring(0, 2));
+                } else if(this.name === 'total-area') {
+                    e.target.value.length > 3 && (e.target.value = e.target.value.substring(0, 3));
+                }
+            }
+            //> numbers
         },
+
+        checkForm(e) {
+            e.preDefault();
+
+            this.isError = true;
+
+            if (this.name === 'name') {
+                e.target.value.length === 0 && (this.error = 'Укажите имя.');
+            } else if (this.name === 'phone') {
+                e.target.value.length === 0 && (this.error = 'Укажите номер телефона.');
+            } else if (this.name === 'address') {
+                e.target.value.length === 0 && (this.error = 'Укажите адрес.');
+            } else if (this.name === 'house-number') {
+                e.target.value.length === 0 && (this.error = 'Укажите номер дома.');
+            } else if (this.name === 'floors') {
+                e.target.value.length === 0 && (this.error = 'Укажите этажность дома.');
+            } else if (this.name === 'floor') {
+                e.target.value.length === 0 && (this.error = 'Укажите этаж квартиры.');
+            } else if (this.name === 'rooms') {
+                e.target.value.length === 0 && (this.error = 'Укажите количество комнат.');
+            } else if (this.name === 'total-area') {
+                e.target.value.length === 0 && (this.error = 'Укажите площадь квартиры.');
+            } else if (this.name === 'kitchen-area') {
+                e.target.value.length === 0 && (this.error = 'Укажите площадь кухни.');
+            }
+
+            return this.isError;
+        }
     },
 };
 </script>
@@ -108,7 +168,7 @@ export default {
         line-height: 16px;
         font-size: 12px;
         color: $secondary-60;
-        letter-spacing: 0.3px;
+        letter-spacing: .3px;
         transform: translateY(calc(-100% + 6px));
     }
 
@@ -116,15 +176,15 @@ export default {
         $bl: &;
 
         &__wrapper {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid $secondary-20;
-            background-color: $secondary-10;
-            padding: 16px;
-            display: flex;
             align-items: center;
-            position: relative;
+            background-color: $secondary-10;
+            border: 1px solid $secondary-20;
+            border-radius: 12px;
             box-sizing: border-box;
+            display: flex;
+            padding: 16px;
+            position: relative;
+            width: 100%;
         }
 
         &__label {
@@ -135,7 +195,7 @@ export default {
             padding: 16px;
             font-size: 16px;
             font-weight: 400;
-            line-height: 24px;
+            line-height: 18px;
             color: $black;
             transition-duration: $transition-duration;
             transition-property: color, transform, font-size;
@@ -186,7 +246,6 @@ export default {
             $is-show: &;
 
             &_label {
-
                 &:focus-within,
                 &#{$bl}_not-empty,
                 &#{$is-show}_placeholder {

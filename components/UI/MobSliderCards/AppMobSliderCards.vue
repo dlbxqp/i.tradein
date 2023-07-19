@@ -73,9 +73,9 @@ export default {
 
                 breakpoints : {
                     // eslint-disable-next-line no-magic-numbers
-                    544 : {
-                        destroy : true,
-                    },
+                    1400 : {
+                        destroy : true
+                    }
                 },
             },
 
@@ -135,7 +135,7 @@ export default {
             margin-top: 0;
             margin-bottom: 0;
 
-            @media (min-width: 544px) {
+            @media all and (min-width: 544px) {
                 font-size: 20px;
             }
         }
@@ -164,7 +164,7 @@ export default {
             }
         }
 
-        @media (min-width: 544px) {
+        @media all and (min-width: 544px) {
             .splide__list {
                 display: grid !important;
                 grid-template-columns: repeat(auto-fit, minmax(313px, 1fr));

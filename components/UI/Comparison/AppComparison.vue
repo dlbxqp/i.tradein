@@ -3,11 +3,11 @@
 <client-only placeholder="loading...">
     <ImgComparisonSlider :value="dividerPosition" class="comparison">
         <figure slot="first" class="comparison__before">
-            <img style="width: 100%" :src="before.image" :alt="before?.text" />
+            <img class="comparison__picture" style="width: 100%" :src="before.image" :alt="before?.text" />
             <figcaption v-if="before.text" v-html="before.text" />
         </figure>
         <figure slot="second" class="comparison__after">
-            <img slot="second" style="width: 100%" :src="after.image" :alt="after?.text" />
+            <img class="comparison__picture" slot="second" style="width: 100%" :src="after.image" :alt="after?.text" />
             <figcaption v-if="after.text" v-html="after.text" />
         </figure>
 
@@ -65,28 +65,44 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-    .comparison {
-        border-radius: 24px;
-        outline: none;
+.comparison {
+    border-radius: 24px;
+    outline: none;
 
-        &__before,
-        &__after {
-            position: relative;
+    &__before,
+    &__after {
+        position: relative;
+        margin: 0;
+
+        figcaption {
+            border-radius: 8px;
+            background: $black;
+            color: $white;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 24px;
             margin: 0;
+            padding: 8px 12px;
+            position: absolute;
+            left: 44px;
+            top: 40px;
 
-            figcaption {
-                border-radius: 8px;
-                background: $black;
-                color: $white;
-                font-size: 16px;
-                font-weight: 600;
-                line-height: 24px;
-                margin: 0;
-                padding: 8px 12px;
-                position: absolute;
-                left: 44px;
-                top: 40px;
+            @media (max-width: 620px) {
+                display: none;
             }
         }
+
+
     }
+
+    &__picture{
+        object-fit: cover;
+        min-height: 320px;
+    }
+
+    @media (max-width: 620px) {
+        border-radius: 0;
+        margin: 0 -20px;
+    }
+}
 </style>

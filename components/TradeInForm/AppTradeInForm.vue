@@ -1,57 +1,32 @@
 <template>
-    <div class="trade-in-form__form">
-        <AppField label="Ваше имя"
-                  class="trade-in-form__2fr"
-                  name="name"
-                  required
+    <form class="trade-in-form">
+        <AppField v-for="(field, index) in fields"
+                  :key="`trade-in-form__field-${index}`"
+                  class="trade-in-form__field"
+                  :class="`trade-in-form__field_${field.size}`"
+                  v-bind="field"
+                  v-model="field.value"
+                  @add-error="addFieldError"
+                  @remove-error="removeFieldError"
         />
-        <AppField label="Контактный телефон"
-                  type="tel"
-                  class="trade-in-form__2fr"
-                  name="phone"
-                  placeholder="+7"
-        />
-        <AppField label="Адрес"
-                  class="trade-in-form__2fr"
-                  name="address"
-        />
-        <AppField label="Номер дома"
-                  class="trade-in-form__2fr"
-                  name="house-number"
-        />
-        <AppField label="Этажность дома"
-                  class="trade-in-form__3fr"
-                  name="floors"
-        />
-        <AppField label="Этаж квартиры"
-                  class="trade-in-form__3fr"
-                  name="floor"
-        />
-        <AppField label="Кол-во комнат"
-                  class="trade-in-form__3fr"
-                  name="rooms"
-        />
-        <AppField label="Общая площадь"
-                  class="trade-in-form__2fr"
-                  name="total-area"
-                  interlineation="м<sup>2</sup>"
-        />
-        <AppField label="Площадь кухни"
-                  class="trade-in-form__2fr"
-                  name="kitchen-area"
-                  interlineation="м<sup>2</sup>"
-        />
+
         <AppButton type="submit"
-                   class="trade-in-form__1fr"
+                   class="trade-in-form__button"
+                   :disabled="button.isDisabled"
+                   :icon="button.icon"
+                   :icon-size="18"
+                   @click="submitForm"
         >
-            Оценить стоимость квартиры
+            {{ button.text }}
         </AppButton>
-    </div>
+    </form>
 </template>
 
 <script>
 import AppButton from '@/components/UI/Button/AppButton.vue';
 import AppField from '@/components/UI/Field/AppField.vue';
+
+const ADDICTION_TEXT_FIELDS = ['kitchen-area'];
 
 export default {
     name       : 'AppTradeInForm',
@@ -59,36 +34,250 @@ export default {
         AppButton,
         AppField,
     },
+
+    data() {
+        return {
+            button : {
+                isDisabled : false,
+                text       : 'Оценить стоимость квартиры',
+                icon       : '',
+            },
+
+            /* eslint-disable no-magic-numbers */
+            fields : [
+                {
+                    value    : '',
+                    name     : 'name',
+                    type     : 'text',
+                    required : true,
+                    error    : 'Укажите имя.',
+                    label    : 'Ваше имя',
+                    size     : 'half',
+                    isError  : false,
+                    regExp   : /[^А-Яа-яёa-z\s-]/ig,
+                    min      : 2,
+                },
+                {
+                    value       : '',
+                    label       : 'Контактный телефон',
+                    name        : 'phone',
+                    type        : 'tel',
+                    placeholder : '+7',
+                    required    : true,
+                    size        : 'half',
+                    error       : 'Укажите номер телефона.',
+                    isError     : false,
+                },
+                {
+                    value    : '',
+                    label    : 'Адрес',
+                    name     : 'address',
+                    type     : 'text',
+                    required : true,
+                    size     : 'half',
+                    error    : 'Укажите адрес.',
+                    isError  : false,
+                },
+                {
+                    value    : '',
+                    label    : 'Номер дома',
+                    name     : 'house-number',
+                    type     : 'text',
+                    required : true,
+                    size     : 'half',
+                    error    : 'Укажите номер дома.',
+                    isError  : false,
+                },
+                {
+                    value    : '',
+                    label    : 'Этажность дома',
+                    name     : 'floors',
+                    type     : 'number',
+                    required : true,
+                    size     : 'third',
+                    error    : 'Укажите этажность дома.',
+                    isError  : false,
+                    regExp   : /\D/ig,
+                    max      : 200,
+                },
+                {
+                    value     : '',
+                    label     : 'Этаж квартиры',
+                    name      : 'floor',
+                    type      : 'number',
+                    required  : true,
+                    size      : 'third',
+                    error     : 'Укажите этаж квартиры.',
+                    isError   : false,
+                    regExp    : /\D/ig,
+                    max       : 200,
+                    addiction : 'floors',
+                },
+                {
+                    value    : '',
+                    label    : 'Кол-во комнат',
+                    name     : 'rooms',
+                    type     : 'text',
+                    required : true,
+                    size     : 'third',
+                    error    : 'Укажите количество комнат.',
+                    isError  : false,
+                    regExp   : /\D/ig,
+                    max      : 20,
+                },
+                {
+                    value          : '',
+                    label          : 'Общая площадь',
+                    name           : 'total-area',
+                    type           : 'text',
+                    required       : true,
+                    size           : 'half',
+                    error          : 'Укажите площадь квартиры.',
+                    interlineation : 'м<sup>2</sup>',
+                    isError        : false,
+                    regExp         : /[^\d.]/ig,
+                    max            : 6,
+                },
+                {
+                    value          : '',
+                    label          : 'Площадь кухни',
+                    name           : 'kitchen-area',
+                    type           : 'text',
+                    required       : true,
+                    size           : 'half',
+                    error          : 'Укажите площадь кухни.',
+                    interlineation : 'м<sup>2</sup>',
+                    isError        : false,
+                    regExp         : /[^\d.]/ig,
+                    max            : 6,
+                    addiction      : 'total-area',
+                },
+            ],
+
+            /* eslint-enable */
+        };
+    },
+
+    watch : {
+        fields : {
+            handler(newValue) {
+                newValue.forEach(field => {
+                    if (
+                        field?.addiction?.length
+                        && (field.type === 'number' || ADDICTION_TEXT_FIELDS.includes(field.name))
+                    ) {
+                        const depends = newValue.filter(itemField => itemField.name === field.addiction)[0];
+
+                        if (depends?.value && field.value) {
+                            field.isError = parseFloat(depends?.value) < parseFloat(field.value);
+                        }
+
+                        field.max = depends?.value ? parseFloat(depends?.value) : field.max ?? 0;
+                        field.min = depends?.min ? parseFloat(depends?.min) : field.min ?? 0;
+                    }
+                });
+            },
+
+            deep : true,
+        },
+    },
+
+    methods : {
+        addFieldError(fieldName) {
+            this.fields.forEach(field => {
+                field.isError = field.name === fieldName;
+            });
+        },
+
+        removeFieldError(fieldName) {
+            this.fields.forEach(field => {
+                if (field.name === fieldName) {
+                    field.isError = false;
+                }
+            });
+        },
+
+        async submitForm() {
+            const data = {};
+
+            this.fields.forEach(item => {
+                item.isError = item.required && !item.value.length;
+                data[item.name] = item.value;
+            });
+
+            if (this.fields.find(item => item.isError)) {
+                return;
+            }
+
+            this.button.isDisabled = true;
+
+            try {
+                await fetch(
+                    'https://wd.ingrad.ru/other/toEMail/tradeIn.php',
+                    {
+                        method  : 'POST',
+                        mode    : 'no-cors',
+                        cache   : 'no-cache',
+                        headers : {
+                            'Content-Type' : 'application/x-www-form-urlencoded',
+                        },
+                        body : new URLSearchParams(data),
+                    },
+                );
+
+                const buttonOldText = this.button.text;
+
+                this.button.isDisabled = false;
+
+                this.button.text = 'Заявка отправлена';
+                this.button.icon = 'checkicon';
+
+                setTimeout(() => {
+                    this.button.text = buttonOldText;
+                    this.button.icon = '';
+                    // eslint-disable-next-line no-magic-numbers
+                }, 5000);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        },
+    },
 };
 </script>
 
 <style lang="scss">
-    .trade-in-form__form {
+    .trade-in-form {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         flex-wrap: wrap;
         gap: 24px;
-    }
 
-    .trade-in-form__1fr {
-        width: 100%;
-    }
-
-    .trade-in-form__2fr {
-        align-self: center;
-        width: calc((100% - 24px) / 2);
-
-        @media (max-width: 1100px) {
-            width: 100%
-        }
-    }
-
-    .trade-in-form__3fr {
-        width: calc((100% - (24px * 2)) / 3);
-
-        @media (max-width: 1100px) {
+        &__button {
             width: 100%;
+        }
+
+        &__field {
+            &_half {
+                width: calc(50% - 12px);
+
+                @media (max-width: 1100px) {
+                    width: 100%
+                }
+            }
+
+            &_third {
+                width: calc(33.333% - 16px);
+
+                @media (max-width: 1100px) {
+                    width: 100%;
+                }
+            }
+
+            &_max {
+                width: 100%;
+            }
         }
     }
 </style>

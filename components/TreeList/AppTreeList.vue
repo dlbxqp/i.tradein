@@ -103,6 +103,7 @@ export default {
             padding-top: 12px;
             padding-bottom: 16px;
             border-bottom: 1px solid rgba($white, 0.2);
+            white-space: nowrap;
 
             @include tablet {
                 border: 1px solid rgba($white, 0.2);

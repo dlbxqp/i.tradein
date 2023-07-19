@@ -11,9 +11,6 @@
               v-html="stringTop"
         />
         <hr>
-        <span class="big-title__bottom"
-              v-html="stringBottom"
-        />
         <a v-if="textLink && text"
            :href="textLink"
            class="big-title__text"
@@ -22,6 +19,9 @@
         <span v-if="!textLink && text"
               class="big-title__text"
               v-html="text"
+        />
+        <span class="big-title__bottom"
+            v-html="stringBottom"
         />
         <hr class="big-title__last">
     </h2>
@@ -92,23 +92,39 @@ export default {
         &__top,
         &__bottom {
             font-size: 180px;
-            line-height: 1;
             font-weight: 500;
-            text-transform: uppercase;
             font-family: $drunk;
+            line-height: 1;
+            text-transform: uppercase;
+
+            @media (max-width: 1440px) {
+                font-size: 8vw
+            }
+            @media (max-width: 620px) {
+                margin-bottom: 8px;
+            }
+        }
+        &__top{
+            @media (max-width: 620px) {
+                margin-left: auto;
+                order: 2
+            }
+        }
+        &__bottom {
+            order: 2;
+            margin-left: auto;
+            padding-top: 14px
         }
 
         hr {
             border: 0;
-            border-bottom: 1px solid rgba($white, 0.2);
-            margin-top: 0;
-            margin-bottom: 24px;
+            border-bottom: 1px solid rgba($white, .2);
+            margin: 0;
             width: 100%;
-        }
 
-        &__bottom {
-            order: 2;
-            margin-left: auto;
+            @media (max-width: 620px) {
+                order: 2;
+            }
         }
 
         &__text {
@@ -123,6 +139,13 @@ export default {
                 &:hover {
                     color: $primary-60;
                 }
+            }
+
+            @media (max-width: 620px) {
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 24px;
+                margin-left: auto;
             }
         }
 
@@ -148,7 +171,6 @@ export default {
             transform: var(--d-transform);
 
             &_is-left {
-
                 &+#{$bl}__top,
                 &#{$image}_is-bottom+*+hr+#{$bl}__bottom {
                     margin-left: auto;

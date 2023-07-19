@@ -72,7 +72,7 @@ export default {
             height: 120px;
 
             @media (max-width: 1024px) {
-                margin: 0 auto 32px auto;
+                margin: 0 auto 32px;
                 width: 200px;
                 height: 200px;
             }
@@ -90,7 +90,8 @@ export default {
             max-width: 420px;
 
             @media (max-width: 740px) {
-                display: flex; justify-content: center;
+                display: flex;
+                justify-content: center;
                 font-size: 30px;
                 line-height: 32px;
                 letter-spacing: -2.1px;
@@ -132,7 +133,8 @@ export default {
                     top: 0;
                     bottom: 0;
                     left: 24px;
-                    width: 60%; height: 100%;
+                    width: 60%;
+                    height: 100%;
                 }
             }
 

@@ -72,22 +72,27 @@ export default {
                 },
 
                 breakpoints : {
-                    // eslint-disable-next-line no-magic-numbers
-                    1400 : {
-                        destroy : true
-                    }
+                    /* eslint-disable no-magic-numbers */
+                    1101 : {
+                        destroy : true,
+                    },
+
+                    650 : {
+                        perPage : 2,
+                    },
+                    /* eslint-enable */
                 },
             },
 
             // eslint-disable-next-line no-magic-numbers
-            isTrack : window.innerWidth < 544,
+            isTrack : window.innerWidth <= 1100,
         };
     },
 
     methods : {
         handleResize() {
             // eslint-disable-next-line no-magic-numbers
-            this.isTrack = window.innerWidth < 544;
+            this.isTrack = window.innerWidth <= 1100;
         },
     },
 
@@ -136,7 +141,7 @@ export default {
             margin-top: 0;
             margin-bottom: 0;
 
-            @media all and (min-width: 544px) {
+            @media (min-width: 544px) {
                 font-size: 20px;
             }
         }
@@ -165,7 +170,7 @@ export default {
             }
         }
 
-        @media all and (min-width: 544px) {
+        @media (min-width: 1101px) {
             .splide__list {
                 display: grid !important;
                 grid-template-columns: repeat(auto-fit, minmax(313px, 1fr));

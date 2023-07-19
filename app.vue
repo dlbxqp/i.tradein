@@ -3,45 +3,45 @@
     <main class="container">
         <header class="header">
             <AppBigTitle class="header__big-title"
-                string-top="Trade–in"
-                string-bottom="Ingrad"
-                text="+7 (495) 256-40-69"
-                text-link="tel:+74952564069"
+                         string-top="Trade–in"
+                         string-bottom="Ingrad"
+                         text="+7 (495) 256-40-69"
+                         text-link="tel:+74952564069"
             />
             <AppComparison :before="comparison.before"
-                :after="comparison.after"
+                           :after="comparison.after"
             />
         </header>
 
         <section class="fears">
             <AppHuman class="fears__human"
-                :image="fears.human.image"
-                :title="fears.human.title"
+                      :image="fears.human.image"
+                      :title="fears.human.title"
             />
             <AppTreeList class="fears__list"
-                :list="fears.list"
+                         :list="fears.list"
             />
         </section>
 
         <AppIcon class="delimiter"
-            icon="delimiter"
-            :height="220"
-            :width="4"
+                 icon="delimiter"
+                 :height="220"
+                 :width="4"
         />
 
         <section class="contra">
             <AppBigTitle class="contra__big-title"
-                string-top="Pro et"
-                string-bottom="Contra"
+                         string-top="Pro et"
+                         string-bottom="Contra"
             />
             <div class="contra__boards">
                 <AppContraList v-for="(item, index) in contra"
-                    class="contra__board"
-                    :class="[
-                                           item.list.length > 5 ? 'contra__board_long' : 'contra__board_short'
-                                       ]"
-                    :key="`contra-list_item_${index}`"
-                    v-bind="item"
+                               class="contra__board"
+                               :class="[
+                                   item.list.length > 5 ? 'contra__board_long' : 'contra__board_short'
+                               ]"
+                               :key="`contra-list_item_${index}`"
+                               v-bind="item"
                 />
             </div>
         </section>
@@ -55,23 +55,23 @@
         </section>
 
         <AppIcon class="delimiter"
-            icon="delimiter"
-            :height="220"
-            :width="4"
+                 icon="delimiter"
+                 :height="220"
+                 :width="4"
         />
 
         <section class="ransom">
             <AppBigTitle class="ransom__big-title"
-                string-top="Инград"
-                string-bottom="Выкупает"
-                :image="ransom.image"
+                         string-top="Инград"
+                         string-bottom="Выкупает"
+                         :image="ransom.image"
             />
         </section>
         <section class="land-form">
             <AppHuman class="land-form__human"
-                :image="form.human.image"
-                :title="form.human.title"
-                :list="form.human.list"
+                      :image="form.human.image"
+                      :title="form.human.title"
+                      :list="form.human.list"
             />
 
             <AppTradeInForm class="land-form__form"/>
@@ -102,7 +102,7 @@ export default {
         AppContraList,
         AppComparison,
         AppMobSliderCards,
-        AppTradeInForm
+        AppTradeInForm,
     },
 
     data() {
@@ -225,159 +225,161 @@ export default {
                         'Можно заселяться и устраивать новоселье =)',
                     ],
                 },
-            }
+            },
         };
     },
 };
 </script>
 
 <style lang="scss">
-.container {
-    width: 100%;
-    max-width: 1440px;
-    overflow-x: hidden;
-    padding: 42px;
+    .container {
+        width: 100%;
+        max-width: 1440px;
+        overflow-x: hidden;
+        padding: 42px;
 
-    @media (max-width: 620px) {
-        width: 100vw;
-        padding: 20px;
-    }
-
-    .header {
-        margin-bottom: 75px;
-
-        &__big-title {
-            margin-bottom: 36px;
-        }
-    }
-
-    .delimiter {
-        display: block;
-        margin: 24px auto 40px;
-
-        @include tablet {
-            margin-top: 85px;
-            margin-bottom: 80px;
-        }
-    }
-
-    .fears {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        @media (max-width: 920px) {
-            flex-direction: column;
+        @media (max-width: 620px) {
+            width: 100vw;
+            padding: 20px;
         }
 
-        &__human {
-            max-width: 690px;
+        .header {
+            margin-bottom: 75px;
+
+            &__big-title {
+                margin-bottom: 36px;
+            }
         }
 
-        &__tree {
-            flex-grow: 1;
+        .delimiter {
+            display: block;
+            margin: 24px auto 40px;
+
+            @include tablet {
+                margin-top: 85px;
+                margin-bottom: 80px;
+            }
         }
-    }
 
-    .contra {
-        .big-title {
-            margin-bottom: 55px;
+        .fears {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-            &__top{
-                @media (max-width: 620px) {
-                    margin-right: auto;
-                    margin-left: 0;
+            @media (max-width: 920px) {
+                flex-direction: column;
+            }
+
+            &__human {
+                max-width: 690px;
+            }
+
+            &__tree {
+                flex-grow: 1;
+            }
+        }
+
+        .contra {
+            .big-title {
+                margin-bottom: 55px;
+
+                &__top {
+                    @media (max-width: 620px) {
+                        margin-right: auto;
+                        margin-left: 0;
+                    }
+                }
+            }
+
+            &__boards {
+                @include tablet {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
+
+
+                @media (max-width: 1024px) {
+                    flex-direction: column;
+                }
+            }
+
+            &__board {
+                &_short {
+                    @media (min-width: 1024px) {
+                        max-width: 402px;
+                    }
+                }
+
+                &_long {
+                    flex-grow: 1;
+                }
+
+                @media (max-width: 740px) {
+                    margin-top: 56px;
                 }
             }
         }
 
-        &__boards {
-            @include tablet {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
+        .get-main {
+            padding-top: 80px;
+
+            &__title {
+                margin-top: 0;
+                margin-bottom: 32px;
+                font-size: 30px;
+                font-weight: 500;
+                line-height: 32px;
+                text-align: center;
+                letter-spacing: -2.1px;
+                font-family: $drunk;
+                color: $white;
+
+                @include tablet {
+                    margin-bottom: 40px;
+                    font-size: 64px;
+                    line-height: 63px;
+                    letter-spacing: -3.2px;
+                }
+            }
+        }
+
+        .ransom {
+            margin-bottom: 24px
+        }
+
+        .land-form {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            width: 100%;
+
+            &__human,
+            &__form {
+                width: 100%;
             }
 
+            &__form {
+                background-color: $black-10;
+                border-radius: 16px;
+                flex-grow: 1;
+                padding: 48px;
 
-            @media (max-width: 1024px) {
+                @media (max-width: 880px) {
+                    border-radius: 0;
+                    margin: 0 -20px;
+                    padding: 16px;
+                    width: 100vw;
+                }
+
+                @media (min-width: 880px) {
+                    max-width: 625px;
+                }
+            }
+
+            @media (max-width: 880px) {
                 flex-direction: column;
             }
         }
-
-        &__board {
-            &_short {
-                @media (min-width: 1024px) {
-                    max-width: 402px;
-                }
-            }
-
-            &_long {
-                flex-grow: 1;
-            }
-
-            @media (max-width: 740px) {
-                margin-top: 56px;
-            }
-        }
     }
-
-    .get-main {
-        padding-top: 80px;
-
-        &__title {
-            margin-top: 0;
-            margin-bottom: 32px;
-            font-size: 30px;
-            font-weight: 500;
-            line-height: 32px;
-            text-align: center;
-            letter-spacing: -2.1px;
-            font-family: $drunk;
-            color: $white;
-
-            @include tablet {
-                margin-bottom: 40px;
-                font-size: 64px;
-                line-height: 63px;
-                letter-spacing: -3.2px;
-            }
-        }
-    }
-
-    .ransom{
-        margin-bottom: 24px
-    }
-
-    .land-form {
-        display: flex;
-        align-items: flex-start;
-        gap: 60px;
-        width: 100%;
-
-        &__human,
-        &__form{
-            width: 100%;
-        }
-        &__form{
-            background-color: $black-10;
-            border-radius: 16px;
-            flex-grow: 1;
-            padding: 48px;
-
-            @media (max-width: 880px) {
-                border-radius: 0;
-                margin: 0 -20px;
-                padding: 16px;
-                width: 100vw;
-            }
-            @media (min-width: 880px) {
-                max-width: 625px;
-            }
-        }
-
-        @media (max-width: 880px) {
-            flex-direction: column;
-        }
-    }
-}
 </style>

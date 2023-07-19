@@ -21,7 +21,7 @@
               v-html="text"
         />
         <span class="big-title__bottom"
-            v-html="stringBottom"
+              v-html="stringBottom"
         />
         <hr class="big-title__last">
     </h2>
@@ -100,16 +100,19 @@ export default {
             @media (max-width: 1440px) {
                 font-size: 8vw
             }
+
             @media (max-width: 620px) {
                 margin-bottom: 8px;
             }
         }
-        &__top{
+
+        &__top {
             @media (max-width: 620px) {
                 margin-left: auto;
                 order: 2
             }
         }
+
         &__bottom {
             order: 2;
             margin-left: auto;
@@ -171,6 +174,7 @@ export default {
             transform: var(--d-transform);
 
             &_is-left {
+
                 &+#{$bl}__top,
                 &#{$image}_is-bottom+*+hr+#{$bl}__bottom {
                     margin-left: auto;

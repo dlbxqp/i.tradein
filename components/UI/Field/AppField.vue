@@ -80,6 +80,21 @@ export default {
             type    : Boolean,
             default : false,
         },
+
+        regExp : {
+            type    : RegExp,
+            default : null,
+        },
+
+        min : {
+            type    : Number,
+            default : 0,
+        },
+
+        max : {
+            type    : Number,
+            default : 0,
+        },
     },
 
     computed : {
@@ -88,87 +103,71 @@ export default {
                 'field_is-show_interlineation' : this.interlineation.length,
                 'field_is-show_placeholder'    : this.placeholder.length,
                 'field_is-show_label'          : this.label.length,
-                'field_not-empty'              : this.modelValue.length, // Почему не работает?
-                'field_is-error'               : this.error.length || this.isError,
+                'field_not-empty'              : this.modelValue.length,
+                'field_is-error'               : this.isError,
             };
         },
     },
 
     methods : {
         updateValue(e) {
+            if (this.regExp) {
+                e.target.value = e.target.value.replaceAll(this.regExp, '');
+            }
+
+            if (this.required && e.target.value.length) {
+                this.$emit('remove-error', this.name);
+            }
+            else {
+                this.$emit('add-error', this.name);
+            }
+
+            if (this.max > 0) {
+                const fieldCheckMax = this.checkMaxField(e.target.value);
+
+                if (fieldCheckMax?.length) {
+                    e.target.value = fieldCheckMax;
+                }
+            }
+
+            if (this.min > 0) {
+                this.checkMinField(e.target.value);
+            }
+
             this.$emit('update:modelValue', e.target.value);
-
-            e.target.value.length > 0 && e.target.classList.add();
-
-            // < name
-            if (
-                this.name === 'name'
-            ) {
-                e.target.value = e.target.value.replaceAll(/[^а-яёa-z\s-]/ig, '');
-            }
-
-            // > name
-
-            // < numbers
-            if (
-                this.name === 'floors'
-                || this.name === 'floor'
-                || this.name === 'rooms'
-                || this.name === 'total-area'
-                || this.name === 'kitchen-area'
-            ) {
-                e.target.value = e.target.value.replaceAll(/\D/ig, '');
-
-                if (
-                    this.name === 'floors'
-                    || this.name === 'floor'
-                    || this.name === 'rooms'
-                    || this.name === 'kitchen-area'
-                ) {
-                    e.target.value.length > 2 && (e.target.value = e.target.value.substring(0, 2));
-                }
-                else if (this.name === 'total-area') {
-                    e.target.value.length > 3 && (e.target.value = e.target.value.substring(0, 3));
-                }
-            }
-
-            // > numbers
         },
 
-        checkForm(e) {
-            e.preDefault();
+        checkMaxField(val) {
+            if (this.type === 'number') {
+                if (parseFloat(val) > this.max) {
+                    this.$emit('add-error', this.name);
+                }
+                else {
+                    this.$emit('remove-error', this.name);
+                }
+            }
+            else if (val.length > this.max) {
+                return val.substring(0, this.max);
+            }
+        },
 
-            this.isError = true;
-
-            if (this.name === 'name') {
-                e.target.value.length === 0 && (this.error = 'Укажите имя.');
+        checkMinField(val) {
+            if (this.type === 'number') {
+                if (parseFloat(val) < this.min) {
+                    this.$emit('add-error', this.name);
+                }
+                else {
+                    this.$emit('remove-error', this.name);
+                }
             }
-            else if (this.name === 'phone') {
-                e.target.value.length === 0 && (this.error = 'Укажите номер телефона.');
+            else {
+                if (val.length < this.min) {
+                    this.$emit('add-error', this.name);
+                }
+                else {
+                    this.$emit('remove-error', this.name);
+                }
             }
-            else if (this.name === 'address') {
-                e.target.value.length === 0 && (this.error = 'Укажите адрес.');
-            }
-            else if (this.name === 'house-number') {
-                e.target.value.length === 0 && (this.error = 'Укажите номер дома.');
-            }
-            else if (this.name === 'floors') {
-                e.target.value.length === 0 && (this.error = 'Укажите этажность дома.');
-            }
-            else if (this.name === 'floor') {
-                e.target.value.length === 0 && (this.error = 'Укажите этаж квартиры.');
-            }
-            else if (this.name === 'rooms') {
-                e.target.value.length === 0 && (this.error = 'Укажите количество комнат.');
-            }
-            else if (this.name === 'total-area') {
-                e.target.value.length === 0 && (this.error = 'Укажите площадь квартиры.');
-            }
-            else if (this.name === 'kitchen-area') {
-                e.target.value.length === 0 && (this.error = 'Укажите площадь кухни.');
-            }
-
-            return this.isError;
         },
     },
 };
@@ -208,6 +207,7 @@ export default {
             font-size: 16px;
             font-weight: 400;
             line-height: 18px;
+            width: 110%;
             color: $black;
             transition-duration: $transition-duration;
             transition-property: color, transform, font-size;
@@ -252,6 +252,7 @@ export default {
             margin-bottom: 0;
             padding-left: 16px;
             padding-right: 16px;
+            display: none;
         }
 
         &_is-show {
@@ -295,6 +296,10 @@ export default {
             #{$bl}__interlineation,
             #{$bl}__label {
                 color: $red-50 !important;
+            }
+
+            #{$bl}__error {
+                display: block;
             }
         }
     }

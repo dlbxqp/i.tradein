@@ -1,14 +1,30 @@
 <template>
     <form class="trade-in-form">
-        <AppField v-for="(field, index) in fields"
-                  :key="`trade-in-form__field-${index}`"
-                  class="trade-in-form__field"
-                  :class="`trade-in-form__field_${field.size}`"
-                  v-bind="field"
-                  v-model="field.value"
-                  @add-error="addFieldError"
-                  @remove-error="removeFieldError"
+        <AppDynamicComponent v-for="(field, index) in fields"
+                             :key="`trade-in-form__field-${index}`"
+                             class="trade-in-form__field"
+                             :class="`trade-in-form__field_${field.size}`"
+                             from="UI"
+                             :component="field.type === 'select' ? 'AppSelect' : 'AppField'"
+                             :all-props="field"
+                             v-model="field.value"
+                             @add-error="addFieldError"
+                             @remove-error="removeFieldError"
         />
+
+
+        <p class="trade-in-form__polit">
+            <AppCheckbox class="trade-in-form__check"
+                         v-model:checked="politCheck"
+                         id="polit_form"
+            />
+            <label for="polit_form">Я соглашаюсь на</label>
+            <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
+               target="_blank"
+            >
+                &nbsp;обработку персональных данных
+            </a>
+        </p>
 
         <AppButton type="submit"
                    class="trade-in-form__button"
@@ -24,7 +40,8 @@
 
 <script>
 import AppButton from '@/components/UI/Button/AppButton.vue';
-import AppField from '@/components/UI/Field/AppField.vue';
+import AppCheckbox from '@/components/UI/Checkbox/AppCheckbox.vue';
+import AppDynamicComponent from '@/components/DynamicComponent/AppDynamicComponent.vue';
 
 const ADDICTION_TEXT_FIELDS = ['kitchen-area'];
 
@@ -32,12 +49,14 @@ export default {
     name       : 'AppTradeInForm',
     components : {
         AppButton,
-        AppField,
+        AppCheckbox,
+        AppDynamicComponent,
     },
 
     data() {
         return {
-            button : {
+            politCheck : false,
+            button     : {
                 isDisabled : false,
                 text       : 'Оценить стоимость квартиры',
                 icon       : '',
@@ -70,6 +89,28 @@ export default {
                 },
                 {
                     value    : '',
+                    label    : 'Регион РФ',
+                    name     : 'region',
+                    type     : 'text',
+                    required : true,
+                    size     : 'half',
+                    error    : 'Укажите регион.',
+                    isError  : false,
+                    min      : 5,
+                },
+                {
+                    value    : '',
+                    label    : 'Населенный пункт',
+                    name     : 'city',
+                    type     : 'text',
+                    required : true,
+                    size     : 'half',
+                    error    : 'Укажите населенный пункт.',
+                    isError  : false,
+                    min      : 5,
+                },
+                {
+                    value    : '',
                     label    : 'Адрес',
                     name     : 'address',
                     type     : 'text',
@@ -87,6 +128,66 @@ export default {
                     size     : 'half',
                     error    : 'Укажите номер дома.',
                     isError  : false,
+                },
+                {
+                    value    : '',
+                    type     : 'select',
+                    label    : 'Тип дома',
+                    name     : 'house-type',
+                    required : true,
+                    size     : 'half',
+                    error    : 'Выберите тип дома',
+                    isError  : false,
+                    options  : [
+                        {
+                            label : 'Панельный',
+                            value : 'Панельный',
+                        },
+                        {
+                            label : 'Блочный',
+                            value : 'Блочный',
+                        },
+                        {
+                            label : 'Кирпичный',
+                            value : 'Кирпичный',
+                        },
+                        {
+                            label : 'Монолитный',
+                            value : 'Монолитный',
+                        },
+                    ],
+                },
+                {
+                    value    : '',
+                    type     : 'select',
+                    label    : 'Состояние квартиры',
+                    name     : 'room-state',
+                    required : true,
+                    size     : 'half',
+                    error    : 'Выберите состояние квартиры',
+                    isError  : false,
+                    options  : [
+                        {
+                            label : 'Качественный ремонт',
+                            value : 'Качественный ремонт',
+                        },
+                        {
+                            label : 'Среднее состояние',
+                            value : 'Среднее состояние',
+                        },
+                        {
+                            label : 'Неудовлетворительное состояние',
+                            value : 'Неудовлетворительное состояние',
+                        },
+                        {
+                            label : 'Отделка от застройщика',
+                            value : 'Отделка от застройщика',
+                        },
+                        {
+                            label : 'Без отделки',
+                            value : 'Без отделки',
+                        },
+                    ],
                 },
                 {
                     value    : '',
@@ -205,7 +306,7 @@ export default {
                 data[item.name] = item.value;
             });
 
-            if (this.fields.find(item => item.isError)) {
+            if (this.fields.find(item => item.isError) && !this.politCheck) {
                 return;
             }
 
@@ -278,6 +379,28 @@ export default {
             &_max {
                 width: 100%;
             }
+        }
+
+        &__polit {
+            font-size: 12px;
+            line-height: 1.5;
+            color: $white;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
+
+            a {
+                color: $primary-60;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &__check {
+            margin-right: 10px;
+            transform: translateY(-2px);
         }
     }
 </style>

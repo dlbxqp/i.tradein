@@ -20,7 +20,7 @@
                   v-html="interlineation"
             />
         </div>
-        <p v-if="error"
+        <p v-if="isError && error"
            class="field__error"
         >{{ error }}</p>
     </label>
@@ -117,9 +117,11 @@ export default {
 
             if (this.required && e.target.value.length) {
                 this.$emit('remove-error', this.name);
+                this.$emit('emiter', ['remove-error', this.name]);
             }
             else {
                 this.$emit('add-error', this.name);
+                this.$emit('emiter', ['add-error', this.name]);
             }
 
             if (this.max > 0) {
@@ -135,15 +137,18 @@ export default {
             }
 
             this.$emit('update:modelValue', e.target.value);
+            this.$emit('emiter', ['update:modelValue', e.target.value]);
         },
 
         checkMaxField(val) {
             if (this.type === 'number') {
                 if (parseFloat(val) > this.max) {
                     this.$emit('add-error', this.name);
+                    this.$emit('emiter', ['add-error', this.name]);
                 }
                 else {
                     this.$emit('remove-error', this.name);
+                    this.$emit('emiter', ['remove-error', this.name]);
                 }
             }
             else if (val.length > this.max) {
@@ -155,17 +160,21 @@ export default {
             if (this.type === 'number') {
                 if (parseFloat(val) < this.min) {
                     this.$emit('add-error', this.name);
+                    this.$emit('emiter', ['add-error', this.name]);
                 }
                 else {
                     this.$emit('remove-error', this.name);
+                    this.$emit('emiter', ['remove-error', this.name]);
                 }
             }
             else {
                 if (val.length < this.min) {
                     this.$emit('add-error', this.name);
+                    this.$emit('emiter', ['add-error', this.name]);
                 }
                 else {
                     this.$emit('remove-error', this.name);
+                    this.$emit('emiter', ['remove-error', this.name]);
                 }
             }
         },
@@ -178,9 +187,8 @@ export default {
         font-weight: 400;
         line-height: 16px;
         font-size: 12px;
-        color: $secondary-60;
         letter-spacing: .3px;
-        transform: translateY(calc(-100% + 6px));
+        transform: translateY(calc(-100% + 8px));
     }
 
     .field {
@@ -208,7 +216,7 @@ export default {
             font-weight: 400;
             line-height: 18px;
             width: 110%;
-            color: $black;
+            color: $secondary-60;
             transition-duration: $transition-duration;
             transition-property: color, transform, font-size;
         }
@@ -229,7 +237,7 @@ export default {
             }
 
             &::placeholder {
-                color: inherit;
+                color: $secondary-60;
             }
         }
 

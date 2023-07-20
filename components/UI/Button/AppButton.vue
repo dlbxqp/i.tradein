@@ -150,8 +150,6 @@ export default {
         text-size-adjust: none;
         box-sizing: border-box;
         cursor: pointer;
-
-        //white-space: nowrap;
         border: 1px solid transparent;
         color: $black;
         font-weight: 600;

@@ -698,6 +698,23 @@
             />
         </symbol>
 
+        <symbol viewBox="0 0 6 10"
+                fill="none"
+                id="arrow-select"
+        >
+            <path fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1 9L5 5L1 1"
+                  fill="currentColor"
+            />
+            <path d="M1 9L5 5L1 1L1 9Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+            />
+        </symbol>
+
         <symbol id="arrow-down"
                 viewBox="0 0 24 24"
         >

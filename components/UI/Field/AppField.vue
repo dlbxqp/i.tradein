@@ -1,27 +1,27 @@
 <template>
     <label class="field"
-        :class="classNames"
+           :class="classNames"
     >
         <div class="field__wrapper">
             <span class="field__label"
-                v-if="label"
-                v-html="label"
+                  v-if="label"
+                  v-html="label"
             />
-                <input :value="modelValue"
-                    :type="type"
-                    class="field__input"
-                    :name="name"
-                    :placeholder="placeholder"
-                    :required="required"
-                    @input="updateValue"
-                >
+            <input :value="modelValue"
+                   :type="type"
+                   class="field__input"
+                   :name="name"
+                   :placeholder="placeholder"
+                   :required="required"
+                   @input="updateValue"
+            >
             <span v-if="interlineation"
-            class="field__interlineation"
-            v-html="interlineation"
-        />
+                  class="field__interlineation"
+                  v-html="interlineation"
+            />
         </div>
         <p v-if="error"
-            class="field__error"
+           class="field__error"
         >{{ error }}</p>
     </label>
 </template>
@@ -30,6 +30,7 @@
 export default {
     name  : 'AppField',
     props : {
+
         /**
          * Type for input
          * @values standart type's for input (text, tel, email, number)
@@ -79,6 +80,21 @@ export default {
             type    : Boolean,
             default : false,
         },
+
+        regExp : {
+            type    : RegExp,
+            default : null,
+        },
+
+        min : {
+            type    : Number,
+            default : 0,
+        },
+
+        max : {
+            type    : Number,
+            default : 0,
+        },
     },
 
     computed : {
@@ -87,77 +103,72 @@ export default {
                 'field_is-show_interlineation' : this.interlineation.length,
                 'field_is-show_placeholder'    : this.placeholder.length,
                 'field_is-show_label'          : this.label.length,
-                'field_not-empty'              : this.modelValue.length, //Почему не работает?
-                'field_is-error'               : this.error.length || this.isError,
+                'field_not-empty'              : this.modelValue.length,
+                'field_is-error'               : this.isError,
             };
         },
     },
 
     methods : {
         updateValue(e) {
-            this.$emit('update:modelValue', e.target.value)
-
-            e.target.value.length > 0 && e.target.classList.add();
-
-            //< name
-            if(
-                this.name === 'name'
-            ){
-                e.target.value = e.target.value.replaceAll(/[^а-яёa-z\s-]/ig, '');
+            if (this.regExp) {
+                e.target.value = e.target.value.replaceAll(this.regExp, '');
             }
-            //> name
 
-            //< numbers
-            if(
-                this.name === 'floors'
-                || this.name === 'floor'
-                || this.name === 'rooms'
-                || this.name === 'total-area'
-                || this.name === 'kitchen-area'
-            ){
-                e.target.value = e.target.value.replaceAll(/\D/ig, '');
+            if (this.required && e.target.value.length) {
+                this.$emit('remove-error', this.name);
+            }
+            else {
+                this.$emit('add-error', this.name);
+            }
 
-                if(
-                    this.name === 'floors'
-                    || this.name === 'floor'
-                    || this.name === 'rooms'
-                    || this.name === 'kitchen-area'
-                ) {
-                    e.target.value.length > 2 && (e.target.value = e.target.value.substring(0, 2));
-                } else if(this.name === 'total-area') {
-                    e.target.value.length > 3 && (e.target.value = e.target.value.substring(0, 3));
+            if (this.max > 0) {
+                const fieldCheckMax = this.checkMaxField(e.target.value);
+
+                if (fieldCheckMax?.length) {
+                    e.target.value = fieldCheckMax;
                 }
             }
-            //> numbers
-        },
 
-        checkForm(e) {
-            e.preDefault();
-
-            this.isError = true;
-
-            if (this.name === 'name') {
-                e.target.value.length === 0 && (this.error = 'Укажите имя.');
-            } else if (this.name === 'phone') {
-                e.target.value.length === 0 && (this.error = 'Укажите номер телефона.');
-            } else if (this.name === 'address') {
-                e.target.value.length === 0 && (this.error = 'Укажите адрес.');
-            } else if (this.name === 'house-number') {
-                e.target.value.length === 0 && (this.error = 'Укажите номер дома.');
-            } else if (this.name === 'floors') {
-                e.target.value.length === 0 && (this.error = 'Укажите этажность дома.');
-            } else if (this.name === 'floor') {
-                e.target.value.length === 0 && (this.error = 'Укажите этаж квартиры.');
-            } else if (this.name === 'rooms') {
-                e.target.value.length === 0 && (this.error = 'Укажите количество комнат.');
-            } else if (this.name === 'total-area') {
-                e.target.value.length === 0 && (this.error = 'Укажите площадь квартиры.');
-            } else if (this.name === 'kitchen-area') {
-                e.target.value.length === 0 && (this.error = 'Укажите площадь кухни.');
+            if (this.min > 0) {
+                this.checkMinField(e.target.value);
             }
 
-            return this.isError;
-        }
+            this.$emit('update:modelValue', e.target.value);
+        },
+
+        checkMaxField(val) {
+            if (this.type === 'number') {
+                if (parseFloat(val) > this.max) {
+                    this.$emit('add-error', this.name);
+                }
+                else {
+                    this.$emit('remove-error', this.name);
+                }
+            }
+            else if (val.length > this.max) {
+                return val.substring(0, this.max);
+            }
+        },
+
+        checkMinField(val) {
+            if (this.type === 'number') {
+                if (parseFloat(val) < this.min) {
+                    this.$emit('add-error', this.name);
+                }
+                else {
+                    this.$emit('remove-error', this.name);
+                }
+            }
+            else {
+                if (val.length < this.min) {
+                    this.$emit('add-error', this.name);
+                }
+                else {
+                    this.$emit('remove-error', this.name);
+                }
+            }
+        },
     },
 };
 </script>
@@ -196,6 +207,7 @@ export default {
             font-size: 16px;
             font-weight: 400;
             line-height: 18px;
+            width: 110%;
             color: $black;
             transition-duration: $transition-duration;
             transition-property: color, transform, font-size;
@@ -240,12 +252,14 @@ export default {
             margin-bottom: 0;
             padding-left: 16px;
             padding-right: 16px;
+            display: none;
         }
 
         &_is-show {
             $is-show: &;
 
             &_label {
+
                 &:focus-within,
                 &#{$bl}_not-empty,
                 &#{$is-show}_placeholder {
@@ -282,6 +296,10 @@ export default {
             #{$bl}__interlineation,
             #{$bl}__label {
                 color: $red-50 !important;
+            }
+
+            #{$bl}__error {
+                display: block;
             }
         }
     }

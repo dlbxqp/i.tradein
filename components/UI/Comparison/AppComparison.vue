@@ -65,44 +65,44 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-.comparison {
-    border-radius: 24px;
-    outline: none;
+    .comparison {
+        border-radius: 24px;
+        outline: none;
 
-    &__before,
-    &__after {
-        position: relative;
-        margin: 0;
-
-        figcaption {
-            border-radius: 8px;
-            background: $black;
-            color: $white;
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 24px;
+        &__before,
+        &__after {
+            position: relative;
             margin: 0;
-            padding: 8px 12px;
-            position: absolute;
-            left: 44px;
-            top: 40px;
 
-            @media (max-width: 620px) {
-                display: none;
+            figcaption {
+                border-radius: 8px;
+                background: $black;
+                color: $white;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 24px;
+                margin: 0;
+                padding: 8px 12px;
+                position: absolute;
+                left: 44px;
+                top: 40px;
+
+                @media (max-width: 620px) {
+                    display: none;
+                }
             }
+
+
         }
 
+        &__picture {
+            object-fit: cover;
+            min-height: 320px;
+        }
 
+        @media (max-width: 620px) {
+            border-radius: 0;
+            margin: 0 -20px;
+        }
     }
-
-    &__picture{
-        object-fit: cover;
-        min-height: 320px;
-    }
-
-    @media (max-width: 620px) {
-        border-radius: 0;
-        margin: 0 -20px;
-    }
-}
 </style>

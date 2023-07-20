@@ -112,6 +112,12 @@ export default {
             padding: 64px 30px;
             background-color: $black-10;
             border-radius: 16px;
+
+            @media (min-width: 650px) and (max-width: 1100px) {
+                box-sizing: border-box;
+                padding-left: 12px;
+                padding-right: 12px;
+            }
         }
 
         &__icon {

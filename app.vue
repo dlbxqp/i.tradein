@@ -361,15 +361,13 @@ export default {
 
             &__form {
                 background-color: $black-10;
-                border-radius: 16px;
                 flex-grow: 1;
                 padding: 48px;
+                border-radius: 16px;
 
                 @media (max-width: 880px) {
-                    border-radius: 0;
-                    margin: 0 -20px;
                     padding: 16px;
-                    width: 100vw;
+                    width: 100%;
                 }
 
                 @media (min-width: 880px) {

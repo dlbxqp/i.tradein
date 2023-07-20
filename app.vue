@@ -74,7 +74,20 @@
                       :list="form.human.list"
             />
 
-            <AppTradeInForm class="land-form__form"/>
+            <AppTradeInForm ref="landform"
+                            class="land-form__form"
+                            id="form"
+            />
+        </section>
+
+        <section class="to-form"
+                 :class="{ 'to-form_active': toFormActive }"
+        >
+            <AppButton href="#form"
+                       class="to-form__button"
+            >
+                Хочу продать
+            </AppButton>
         </section>
     </main>
 </template>
@@ -83,6 +96,7 @@
 <script>
 import AppIcons from '@/components/UI/Icons/AppIcons.vue';
 import AppIcon from '@/components/UI/Icons/AppIcon.vue';
+import AppButton from '@/components/UI/Button/AppButton.vue';
 import AppBigTitle from '@/components/BigTitle/AppBigTitle.vue';
 import AppComparison from '@/components/UI/Comparison/AppComparison.vue';
 import AppMobSliderCards from '@/components/UI/MobSliderCards/AppMobSliderCards.vue';
@@ -103,11 +117,13 @@ export default {
         AppComparison,
         AppMobSliderCards,
         AppTradeInForm,
+        AppButton,
     },
 
     data() {
         return {
-            comparison : {
+            toFormActive : true,
+            comparison   : {
                 before : {
                     image : '/images/comparison/before.png',
                     text  : 'До трейдина',
@@ -227,6 +243,17 @@ export default {
                 },
             },
         };
+    },
+
+    mounted() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                this.toFormActive = !entry.isIntersecting;
+            });
+            // eslint-disable-next-line no-magic-numbers
+        }, { threshold: 0.1 });
+
+        observer.observe(this.$refs.landform.$el);
     },
 };
 </script>
@@ -377,6 +404,31 @@ export default {
 
             @media (max-width: 880px) {
                 flex-direction: column;
+            }
+        }
+
+        .to-form {
+            background-image: linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0%) 100%);
+            display: flex;
+            padding: 20px 16px;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transition-duration: $transition-duration;
+
+            @media (min-width: 640px) {
+                display: none;
+            }
+
+            &_active {
+                opacity: 1;
+            }
+
+            &__button {
+                width: 100%;
             }
         }
     }

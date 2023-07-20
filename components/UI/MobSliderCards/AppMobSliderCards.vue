@@ -97,11 +97,15 @@ export default {
     },
 
     mounted() {
-        window.addEventListener('resize', this.handleResize);
+        setTimeout(() => {
+            window.addEventListener('resize', this.handleResize);
+        }, 0);
     },
 
     beforeUnmount() {
-        window.removeEventListener('resize', this.handleResize);
+        setTimeout(() => {
+            window.removeEventListener('resize', this.handleResize);
+        }, 0);
     },
 };
 </script>

@@ -83,29 +83,7 @@ export default {
                     /* eslint-enable */
                 },
             },
-
-            // eslint-disable-next-line no-magic-numbers
-            isTrack : window.innerWidth <= 1100,
         };
-    },
-
-    methods : {
-        handleResize() {
-            // eslint-disable-next-line no-magic-numbers
-            this.isTrack = window.innerWidth <= 1100;
-        },
-    },
-
-    mounted() {
-        setTimeout(() => {
-            window.addEventListener('resize', this.handleResize);
-        }, 0);
-    },
-
-    beforeUnmount() {
-        setTimeout(() => {
-            window.removeEventListener('resize', this.handleResize);
-        }, 0);
     },
 };
 </script>

@@ -1,12 +1,13 @@
 <template>
-    <component :is="is"
+    <component v-once
+               :is="is"
                v-bind="allProps"
                @emiter="emiter"
     />
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent } from 'vue';
+import { defineAsyncComponent } from 'vue';
 // eslint-disable-next-line no-undef
 const props = defineProps({
 
@@ -36,16 +37,14 @@ const props = defineProps({
     },
 });
 
-const is = computed(() =>
-    defineAsyncComponent(() =>
-        import(
+const is = defineAsyncComponent(() =>
+    import(
 
-            /* @vite-ignore */
-            '../'
-            + (props.from.length ? props.from + '/' : '')
-            + props.component.substring(3)
-            + '/' + props.component + '.vue'
-        ),
+        /* @vite-ignore */
+        '../'
+        + (props.from.length ? props.from + '/' : '')
+        + props.component.substring(3)
+        + '/' + props.component + '.vue'
     ),
 );
 

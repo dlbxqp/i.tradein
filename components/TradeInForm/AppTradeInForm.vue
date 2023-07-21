@@ -1,15 +1,16 @@
 <template>
     <form class="trade-in-form">
-        <AppDynamicComponent v-for="(field, index) in fields"
-                             :key="`trade-in-form__field-${index}`"
-                             class="trade-in-form__field"
-                             :class="`trade-in-form__field_${field.size}`"
-                             from="UI"
-                             :component="field.type === 'select' ? 'AppSelect' : 'AppField'"
-                             :all-props="field"
-                             v-model="field.value"
-                             @add-error="addFieldError"
-                             @remove-error="removeFieldError"
+        <component v-for="(field, index) in fields"
+                   :is="field.type === 'select' ? 'AppSelect' : 'AppField'"
+                   :key="`trade-in-form__field-${index}`"
+                   class="trade-in-form__field"
+                   :class="`trade-in-form__field_${field.size}`"
+                   from="UI"
+                   :component="field.type === 'select' ? 'AppSelect' : 'AppField'"
+                   v-bind="field"
+                   v-model="field.value"
+                   @add-error="addFieldError"
+                   @remove-error="removeFieldError"
         />
 
 
@@ -41,7 +42,8 @@
 <script>
 import AppButton from '@/components/UI/Button/AppButton.vue';
 import AppCheckbox from '@/components/UI/Checkbox/AppCheckbox.vue';
-import AppDynamicComponent from '@/components/DynamicComponent/AppDynamicComponent.vue';
+import AppField from '@/components/UI/Field/AppField.vue';
+import AppSelect from '@/components/UI/Select/AppSelect.vue';
 
 const ADDICTION_TEXT_FIELDS = ['kitchen-area'];
 
@@ -50,7 +52,8 @@ export default {
     components : {
         AppButton,
         AppCheckbox,
-        AppDynamicComponent,
+        AppSelect,
+        AppField,
     },
 
     data() {

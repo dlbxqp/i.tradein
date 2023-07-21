@@ -196,18 +196,19 @@ export default {
 
             ransom : {
                 image : {
-                    url   : '/images/stamp.png',
+                    url   : '/images/stamp.svg',
                     sizes : {
-                        dWidth  : '280px',
-                        dHeight : '280px',
-                        mWidth  : '99px',
-                        mHeight : '99px',
+                        dWidth  : '453px',
+                        dHeight : '453px',
+                        mWidth  : '199px',
+                        mHeight : '199px',
                     },
 
                     position : {
                         horizontalState : 'left',
                         verticalState   : 'top',
-                        dTransform      : 'translate(40px, -45px)',
+                        dTransform      : 'translate(-62px, -65px)',
+                        mTransform      : 'translate(-52px, -35px)',
                     },
                 },
             },

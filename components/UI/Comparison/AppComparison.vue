@@ -1,19 +1,42 @@
-<!-- eslint-disable -->
 <template>
-<client-only placeholder="loading...">
-    <ImgComparisonSlider :value="dividerPosition" class="comparison">
-        <figure slot="first" class="comparison__before">
-            <img class="comparison__picture" style="width: 100%" :src="before.image" :alt="before?.text" />
-            <figcaption v-if="before.text" v-html="before.text" />
-        </figure>
-        <figure slot="second" class="comparison__after">
-            <img class="comparison__picture" slot="second" style="width: 100%" :src="after.image" :alt="after?.text" />
-            <figcaption v-if="after.text" v-html="after.text" />
-        </figure>
+    <!-- eslint-disable-next-line vue/no-undef-components -->
+    <client-only placeholder="loading...">
+        <ImgComparisonSlider :value="dividerPosition"
+                             class="comparison"
+        >
+            <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->
+            <figure slot="first"
+                    class="comparison__before"
+            >
+                <img class="comparison__picture"
+                     :src="before.image"
+                     :alt="before?.text"
+                >
+                <figcaption v-if="before.text"
+                            v-html="before.text"
+                />
+            </figure>
+            <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->
+            <figure slot="second"
+                    class="comparison__after"
+            >
+                <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->
+                <img slot="second"
+                     class="comparison__picture"
+                     :src="after.image"
+                     :alt="after?.text"
+                >
+                <figcaption v-if="after.text"
+                            v-html="after.text"
+                />
+            </figure>
 
-        <div slot="handle" v-html="divider" />
-    </ImgComparisonSlider>
-</client-only>
+            <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->
+            <div slot="handle"
+                 v-html="divider"
+            />
+        </ImgComparisonSlider>
+    </client-only>
 </template>
  <!-- eslint-enable -->
 
@@ -88,7 +111,10 @@ export default defineComponent({
                 top: 40px;
 
                 @media (max-width: 620px) {
-                    display: none;
+                    left: 15px;
+                    top: 15px;
+                    font-size: 12px;
+                    line-height: 16px;
                 }
             }
 
@@ -98,6 +124,7 @@ export default defineComponent({
         &__picture {
             object-fit: cover;
             min-height: 320px;
+            width: 100%;
         }
 
         @media (max-width: 620px) {

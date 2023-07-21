@@ -72,6 +72,7 @@ export default {
                 --m-width: ${this.image?.sizes?.mWidth ?? '0'};
                 --m-height: ${this.image?.sizes?.mHeight ?? '0'};
                 --d-transform: ${this.image?.position?.dTransform ?? 'none'};
+                --m-transform: ${this.image?.position?.mTransform ?? 'none'};
             `;
         },
     },
@@ -165,6 +166,7 @@ export default {
             --m-width: 0;
             --m-height: 0;
             --d-transform: none;
+            --m-transform: none;
 
             width: var(--d-width);
             height: var(--d-height);
@@ -201,6 +203,7 @@ export default {
             @include mobile-only {
                 width: var(--m-width);
                 height: var(--m-height);
+                transform: var(--m-transform);
             }
         }
     }

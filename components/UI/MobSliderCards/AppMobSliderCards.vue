@@ -77,7 +77,7 @@ export default {
                         destroy : true,
                     },
 
-                    650 : {
+                    625 : {
                         perPage : 2,
                     },
                     /* eslint-enable */
@@ -95,7 +95,7 @@ export default {
             background-color: $black-10;
             border-radius: 16px;
 
-            @media (min-width: 650px) and (max-width: 1100px) {
+            @media (min-width: 625px) and (max-width: 1100px) {
                 box-sizing: border-box;
                 padding-left: 12px;
                 padding-right: 12px;

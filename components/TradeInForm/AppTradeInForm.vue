@@ -84,6 +84,7 @@ export default {
                     label       : 'Контактный телефон',
                     name        : 'phone',
                     type        : 'tel',
+                    mask        : '{+7} (000) 000 00 00',
                     placeholder : '+7',
                     required    : true,
                     size        : 'half',
@@ -305,7 +306,7 @@ export default {
             const data = {};
 
             this.fields.forEach(item => {
-                item.isError = item.required && !item.value.length;
+                item.isError = item.isError || (item.required && !item.value.length);
                 data[item.name] = item.value;
             });
 

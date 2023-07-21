@@ -7,7 +7,8 @@
                   v-if="label"
                   v-html="label"
             />
-            <input :value="modelValue"
+            <input v-if="!mask"
+                   :value="modelValue"
                    :type="type"
                    class="field__input"
                    :name="name"
@@ -15,6 +16,15 @@
                    :required="required"
                    @input="updateValue"
             >
+            <input v-else
+                   :value="modelValue"
+                   v-imask="maskDirrective"
+                   @accept="onAccept"
+                   @complete="onComplete"
+                   class="field__input"
+                   :placeholder="placeholder"
+            >
+
             <span v-if="interlineation"
                   class="field__interlineation"
                   v-html="interlineation"
@@ -27,8 +37,14 @@
 </template>
 
 <script>
+import { IMaskDirective } from 'vue-imask';
+
 export default {
-    name  : 'AppField',
+    name       : 'AppField',
+    directives : {
+        imask : IMaskDirective,
+    },
+
     props : {
 
         /**
@@ -52,6 +68,11 @@ export default {
         },
 
         label : {
+            type    : String,
+            default : '',
+        },
+
+        mask : {
             type    : String,
             default : '',
         },
@@ -97,6 +118,15 @@ export default {
         },
     },
 
+    data() {
+        return {
+            maskDirrective : {
+                mask : this.mask,
+                lazy : false,
+            },
+        };
+    },
+
     computed : {
         classNames() {
             return {
@@ -110,6 +140,23 @@ export default {
     },
 
     methods : {
+        onAccept(e) {
+            const maskRef = e.detail;
+
+            this.$emit('update:modelValue', maskRef.value);
+            this.$emit('emiter', ['update:modelValue', maskRef.value]);
+
+            this.$emit('add-error', this.name);
+            this.$emit('emiter', ['add-error', this.name]);
+        },
+
+        onComplete(e) {
+            const maskRef = e.detail;
+
+            this.$emit('remove-error', this.name);
+            this.$emit('emiter', ['remove-error', this.name]);
+        },
+
         updateValue(e) {
             if (this.regExp) {
                 e.target.value = e.target.value.replaceAll(this.regExp, '');

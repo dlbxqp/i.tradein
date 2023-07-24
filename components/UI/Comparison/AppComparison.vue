@@ -43,8 +43,6 @@
 <script>
 import { defineComponent, defineAsyncComponent } from 'vue';
 
-const DIVIDER_POSITION_DEFAULT = 95;
-
 export default defineComponent({
     name       : 'AppComparison',
     components : {
@@ -79,10 +77,10 @@ export default defineComponent({
             `,
         },
 
-        dividerPosition : {
-            type    : Number,
-            default : DIVIDER_POSITION_DEFAULT,
-        },
+        dividerPosition: {
+            type: Number,
+            default: 95
+        }
     },
 });
 </script>

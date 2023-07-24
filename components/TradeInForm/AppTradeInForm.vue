@@ -1,4 +1,4 @@
-<template>
+<template xmlns="http://www.w3.org/1999/html">
     <form class="trade-in-form">
         <component v-for="(field, index) in fields"
                    :is="field.type === 'select' ? 'AppSelect' : 'AppField'"
@@ -19,14 +19,16 @@
                          v-model:checked="politCheck"
                          id="polit_form"
             />
-            <span>
-                Я соглашаюсь на
-                <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
-                    target="_blank"
-                >
-                    &nbsp;обработку персональных данных
-                </a>
-            </span>
+            <label for="polit_form">
+                <span>
+                    Я соглашаюсь на
+                    <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
+                        target="_blank"
+                    >
+                        &nbsp;обработку персональных данных
+                    </a>
+                </span>
+            </label>
         </p>
 
         <AppButton type="submit"

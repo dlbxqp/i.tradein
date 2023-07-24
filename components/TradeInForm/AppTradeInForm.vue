@@ -19,16 +19,14 @@
                          v-model:checked="politCheck"
                          id="polit_form"
             />
-            <label for="polit_form">
-                <span>
-                    Я соглашаюсь на
-                    <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
-                       target="_blank"
-                    >
-                        &nbsp;обработку персональных данных
-                    </a>
-                </span>
-            </label>
+            <span>
+                <label for="polit_form">Я соглашаюсь на</label>
+                <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
+                   target="_blank"
+                >
+                    &nbsp;обработку персональных данных
+                </a>
+            </span>
         </p>
 
         <AppButton type="submit"

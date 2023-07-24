@@ -10,7 +10,7 @@
             />
             <AppComparison :before="comparison.before"
                            :after="comparison.after"
-                           :dividerPosition="50"
+                           :divider-position="50"
             />
         </header>
 

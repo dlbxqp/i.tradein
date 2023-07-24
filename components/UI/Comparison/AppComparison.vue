@@ -77,10 +77,10 @@ export default defineComponent({
             `,
         },
 
-        dividerPosition: {
-            type: Number,
-            default: 95
-        }
+        dividerPosition : {
+            type    : Number,
+            default : 95,
+        },
     },
 });
 </script>

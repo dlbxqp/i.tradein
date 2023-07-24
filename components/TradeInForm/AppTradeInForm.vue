@@ -1,4 +1,4 @@
-<template xmlns="http://www.w3.org/1999/html">
+<template>
     <form class="trade-in-form">
         <component v-for="(field, index) in fields"
                    :is="field.type === 'select' ? 'AppSelect' : 'AppField'"
@@ -23,7 +23,7 @@
                 <span>
                     Я соглашаюсь на
                     <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
-                        target="_blank"
+                       target="_blank"
                     >
                         &nbsp;обработку персональных данных
                     </a>
@@ -299,8 +299,8 @@ export default {
         politCheck : {
             handler() {
                 this.lockButton();
-            }
-        }
+            },
+        },
     },
 
     methods : {
@@ -372,59 +372,59 @@ export default {
 </script>
 
 <style lang="scss">
-.trade-in-form {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 24px;
+    .trade-in-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 24px;
 
-    &__button {
-        width: 100%;
-    }
-
-    &__field {
-        &_half {
-            width: calc(50% - 12px);
-
-            @media (max-width: 1100px) {
-                width: 100%
-            }
+        &__button {
+            width: 100%;
         }
 
-        &_third {
-            width: calc(33.333% - 16px);
+        &__field {
+            &_half {
+                width: calc(50% - 12px);
 
-            @media (max-width: 1100px) {
+                @media (max-width: 1100px) {
+                    width: 100%
+                }
+            }
+
+            &_third {
+                width: calc(33.333% - 16px);
+
+                @media (max-width: 1100px) {
+                    width: 100%;
+                }
+            }
+
+            &_max {
                 width: 100%;
             }
         }
 
-        &_max {
-            width: 100%;
-        }
-    }
+        &__polit {
+            font-size: 12px;
+            line-height: 1.5;
+            color: $white;
+            margin: 0;
+            display: flex;
+            align-items: flex-start;
 
-    &__polit {
-        font-size: 12px;
-        line-height: 1.5;
-        color: $white;
-        margin: 0;
-        display: flex;
-        align-items: flex-start;
+            a {
+                color: $primary-60;
 
-        a {
-            color: $primary-60;
-
-            &:hover {
-                text-decoration: underline;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
-    }
 
-    &__check {
-        margin-right: 10px;
-        transform: translateY(-2px);
+        &__check {
+            margin-right: 10px;
+            transform: translateY(-2px);
+        }
     }
-}
 </style>

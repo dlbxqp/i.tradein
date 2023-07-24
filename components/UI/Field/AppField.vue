@@ -46,6 +46,7 @@ export default {
     },
 
     props : {
+
         /**
          * Type for input
          * @values standart type's for input (text, tel, email, number)

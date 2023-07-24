@@ -6,7 +6,7 @@
                :checked="checked"
                :value="value"
                :id="id"
-        />
+        >
         <span class="checkbox__check">
             <AppIcon class="checkbox__icon"
                      icon="checkbox"

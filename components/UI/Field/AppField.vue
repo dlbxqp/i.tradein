@@ -151,9 +151,7 @@ export default {
             this.$emit('emiter', ['add-error', this.name]);
         },
 
-        onComplete(e) {
-            const maskRef = e.detail;
-
+        onComplete() {
             this.$emit('remove-error', this.name);
             this.$emit('emiter', ['remove-error', this.name]);
         },

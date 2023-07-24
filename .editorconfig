@@ -12,11 +12,11 @@ indent_size = 4
 [*.md]
 trim_trailing_whitespace = false
 
-[{.babelrc,.stylelintrc,jest.config,.prettierrc,*.json,*.jsb3,*.jsb2,*.bowerrc}]
+[{.babelrc, .stylelintrc, jest.config, .prettierrc, *.json, *.jsb3, *.jsb2, *.bowerrc}]
 indent_style = space
 indent_size = 4
 
-[{*.scss,*.less,*.sass}]
+[{*.scss, *.less, *.sass}]
 indent_style = space
 indent_size = 4
 
@@ -24,7 +24,7 @@ indent_size = 4
 indent_style = space
 indent_size = 4
 
-[{jshint.json,*.jshintrc}]
+[{jshint.json, *.jshintrc}]
 indent_style = space
 indent_size = 4
 

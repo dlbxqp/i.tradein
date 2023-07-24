@@ -98,11 +98,9 @@ export default {
             line-height: 1;
             text-transform: uppercase;
 
-            @media (max-width: 1440px) {
-                font-size: 8vw
-            }
-
             @media (max-width: 620px) {
+                font-size: 44px;
+                letter-spacing: -3.08px;
                 margin-bottom: 8px;
             }
         }

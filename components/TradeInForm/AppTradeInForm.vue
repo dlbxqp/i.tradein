@@ -19,12 +19,14 @@
                          v-model:checked="politCheck"
                          id="polit_form"
             />
-            <label for="polit_form">Я соглашаюсь на</label>
-            <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
-               target="_blank"
-            >
-                &nbsp;обработку персональных данных
-            </a>
+            <span>
+                <label for="polit_form">Я соглашаюсь на</label>
+                <a href="//www.ingrad.ru/pages/politika_obrabotki_personalnyh_dannyh/"
+                   target="_blank"
+                >
+                    &nbsp;обработку персональных данных
+                </a>
+            </span>
         </p>
 
         <AppButton type="submit"
@@ -60,7 +62,7 @@ export default {
         return {
             politCheck : false,
             button     : {
-                isDisabled : false,
+                isDisabled : true,
                 text       : 'Оценить стоимость квартиры',
                 icon       : '',
             },
@@ -72,11 +74,11 @@ export default {
                     name     : 'name',
                     type     : 'text',
                     required : true,
-                    error    : 'Укажите имя.',
+                    error    : 'Укажите имя',
                     label    : 'Ваше имя',
                     size     : 'half',
                     isError  : false,
-                    regExp   : /[^А-Яа-яёa-z\s-]/ig,
+                    regExp   : /[^а-яёa-z\s-]/ig,
                     min      : 2,
                 },
                 {
@@ -88,7 +90,7 @@ export default {
                     placeholder : '+7',
                     required    : true,
                     size        : 'half',
-                    error       : 'Укажите номер телефона.',
+                    error       : 'Укажите номер телефона',
                     isError     : false,
                 },
                 {
@@ -98,8 +100,9 @@ export default {
                     type     : 'text',
                     required : true,
                     size     : 'half',
-                    error    : 'Укажите регион.',
+                    error    : 'Укажите регион',
                     isError  : false,
+                    regExp   : /[^а-яёa-z\s-]/ig,
                     min      : 5,
                 },
                 {
@@ -109,8 +112,9 @@ export default {
                     type     : 'text',
                     required : true,
                     size     : 'half',
-                    error    : 'Укажите населенный пункт.',
+                    error    : 'Укажите населенный пункт',
                     isError  : false,
+                    regExp   : /[^а-яёa-z0-9\s-]/ig,
                     min      : 5,
                 },
                 {
@@ -120,7 +124,8 @@ export default {
                     type     : 'text',
                     required : true,
                     size     : 'half',
-                    error    : 'Укажите адрес.',
+                    error    : 'Укажите адрес',
+                    regExp   : /[^а-яёa-z0-9\s-]/ig,
                     isError  : false,
                 },
                 {
@@ -131,6 +136,7 @@ export default {
                     required : true,
                     size     : 'half',
                     error    : 'Укажите номер дома.',
+                    regExp   : /[^а-яёa-z0-9\s-]/ig,
                     isError  : false,
                 },
                 {
@@ -281,13 +287,25 @@ export default {
                         field.min = depends?.min ? parseFloat(depends?.min) : field.min ?? 0;
                     }
                 });
+
+                this.lockButton();
             },
 
             deep : true,
         },
+
+        politCheck : {
+            handler() {
+                this.lockButton();
+            },
+        },
     },
 
     methods : {
+        lockButton() {
+            this.button.isDisabled = this.fields.some(element => (element.isError || (element.required && !element.value.length) || !this.politCheck));
+        },
+
         addFieldError(fieldName) {
             this.fields.forEach(field => {
                 field.isError = field.name === fieldName;
@@ -311,7 +329,7 @@ export default {
             });
 
             if (this.fields.find(item => item.isError) && !this.politCheck) {
-                return;
+                return false;
             }
 
             this.button.isDisabled = true;
@@ -321,7 +339,7 @@ export default {
                     'https://wd.ingrad.ru/other/toEMail/tradeIn.php',
                     {
                         method  : 'POST',
-                        mode    : 'no-cors',
+                        mode    : 'cors',
                         cache   : 'no-cache',
                         headers : {
                             'Content-Type' : 'application/x-www-form-urlencoded',

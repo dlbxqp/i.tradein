@@ -10,6 +10,7 @@
             />
             <AppComparison :before="comparison.before"
                            :after="comparison.after"
+                           :divider-position="50"
             />
         </header>
 
@@ -31,8 +32,8 @@
 
         <section class="contra">
             <AppBigTitle class="contra__big-title"
-                         string-top="Pro et"
-                         string-bottom="Contra"
+                         string-top="За <span style='font-size: .6em'>и</span>"
+                         string-bottom="против"
             />
             <div class="contra__boards">
                 <AppContraList v-for="(item, index) in contra"
@@ -67,6 +68,7 @@
                          :image="ransom.image"
             />
         </section>
+
         <section class="land-form">
             <AppHuman class="land-form__human"
                       :image="form.human.image"

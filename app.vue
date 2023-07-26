@@ -26,13 +26,13 @@
 
         <AppIcon class="delimiter"
                  icon="delimiter"
-                 :height="220"
-                 :width="4"
+                 :height="270"
+                 :width="8"
         />
 
         <section class="contra">
             <AppBigTitle class="contra__big-title"
-                         string-top="За <span style='font-size: .6em'>и</span>"
+                         string-top="За &"
                          string-bottom="против"
             />
             <div class="contra__boards">
@@ -57,8 +57,8 @@
 
         <AppIcon class="delimiter"
                  icon="delimiter"
-                 :height="220"
-                 :width="4"
+                 :height="270"
+                 :width="8"
         />
 
         <section class="ransom">

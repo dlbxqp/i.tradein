@@ -422,6 +422,7 @@ export default {
             transition-duration: $transition-duration;
 
             @media (max-width: 640px) {
+                background-image: linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0%) 100%);
                 display: none;
                 max-width: none;
             }

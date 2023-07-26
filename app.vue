@@ -411,25 +411,25 @@ export default {
         }
 
         .to-form {
-            background-image: linear-gradient(0deg, #000 0%, rgb(0 0 0 / 0%) 100%);
-            display: flex;
+            display: none;
+            opacity: 0;
             padding: 20px 16px;
             position: fixed;
-            right: 0;
             bottom: 0;
             left: 0;
             width: 100%;
-            opacity: 0;
+            max-width: 330px;
             transition-duration: $transition-duration;
 
-            @media (min-width: 640px) {
+            @media (max-width: 640px) {
                 display: none;
+                max-width: none;
             }
 
             &_active {
+                display: flex;
                 opacity: 1;
             }
-
             &__button {
                 width: 100%;
             }

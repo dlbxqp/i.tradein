@@ -17,7 +17,10 @@ export default defineNuxtConfig({
             },
         },
     },
-    modules : ['@pinia/nuxt'],
+    modules : [
+        '@pinia/nuxt',
+        '@nuxtjs/gtm'
+    ],
     imports : {
         autoImport : false,
     },
@@ -53,6 +56,7 @@ export default defineNuxtConfig({
             },
         ],
     },
-
-    // pages    : true,
+    gtm: {
+        id: 'GTM-NTLK74K'
+    }
 });

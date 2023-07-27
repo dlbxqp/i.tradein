@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@img-comparison-slider/vue": "^8.0.0",
+    "@nuxtjs/gtm": "^2.4.0",
     "@pinia/nuxt": "^0.4.11",
     "@rushstack/eslint-patch": "^1.2.0",
     "@splidejs/vue-splide": "^0.6.12",

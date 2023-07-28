@@ -3,6 +3,14 @@ import { fileURLToPath, URL } from 'node:url';
 
 // eslint-disable-next-line no-undef
 export default defineNuxtConfig({
+    modules : [
+        '@zadigetvoltaire/nuxt-gtm',
+        '@pinia/nuxt'
+    ],
+    devtools : { enabled: true },
+    gtm: {
+        id: 'GTM-NTLK74K'
+    },
     vite : {
         resolve : {
             alias : {
@@ -17,10 +25,6 @@ export default defineNuxtConfig({
             },
         },
     },
-    modules : [
-        '@pinia/nuxt',
-        '@nuxtjs/gtm'
-    ],
     imports : {
         autoImport : false,
     },
@@ -30,7 +34,6 @@ export default defineNuxtConfig({
         '@/assets/styles/root.scss',
         '~/@splidejs/vue-splide/dist/css/splide-core.min.css',
     ],
-    devtools : { enabled: true },
     head     : {
         title     : 'Trade-in от Инград',
         htmlAttrs : {
@@ -56,7 +59,4 @@ export default defineNuxtConfig({
             },
         ],
     },
-    gtm: {
-        id: 'GTM-NTLK74K'
-    }
 });

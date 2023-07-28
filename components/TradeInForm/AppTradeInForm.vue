@@ -335,7 +335,7 @@ export default {
             this.button.isDisabled = true;
 
             try {
-                await fetch(
+                let response = await fetch(
                     'https://wd.ingrad.ru/other/toEMail/tradeIn.php',
                     {
                         method  : 'POST',
@@ -347,6 +347,8 @@ export default {
                         body : new URLSearchParams(data),
                     },
                 );
+
+                console.log('response', response);
 
                 const buttonOldText = this.button.text;
 

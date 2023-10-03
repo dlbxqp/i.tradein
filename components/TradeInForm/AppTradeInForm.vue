@@ -350,7 +350,7 @@ export default {
 
                 const buttonOldText = this.button.text;
 
-                this.button.isDisabled = false;
+                //this.button.isDisabled = false;
 
                 this.button.text = 'Заявка отправлена';
                 this.button.icon = 'checkicon';

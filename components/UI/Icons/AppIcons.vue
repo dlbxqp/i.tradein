@@ -7,13 +7,7 @@
         <symbol id="banknot"
                 viewBox="0 0 129 128"
         >
-            <path
-                d="M48.5 84.8H21.3C15.7 84.8 11.1667 80.2667 11.1667 74.6667V26.1333C11.1667 20.5333 15.7 16 21.3 16H102.367C107.967 16 112.5 20.5333 112.5 26.1333V58.6667"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
+            checkbox
             <path d="M120.441 93.3333L112.441 85.3333L104.441 93.3333"
                   stroke="currentColor"
                   stroke-width="1.5"
